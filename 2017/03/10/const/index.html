@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C和C++中声明和定义的区别 | Th&#39;s blog</title>
+  <title>C++中const的用法 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="声明使得名字为程序所知，而定义负责创建与名字关联的实体。变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。
-如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量">
+  <meta name="description" content="const变量const又叫做const限定符，用关键字const对变量的类型加以限定，可以使得变量的值不能被改变。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C和C++中声明和定义的区别">
-<meta property="og:url" content="http://yoursite.com/2017/03/10/test-1/index.html">
+<meta property="og:title" content="C++中const的用法">
+<meta property="og:url" content="http://yoursite.com/2017/03/10/const/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="声明使得名字为程序所知，而定义负责创建与名字关联的实体。变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。
-如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量">
-<meta property="og:updated_time" content="2017-03-10T02:30:53.672Z">
+<meta property="og:description" content="const变量const又叫做const限定符，用关键字const对变量的类型加以限定，可以使得变量的值不能被改变。">
+<meta property="og:updated_time" content="2017-03-10T08:48:38.110Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C和C++中声明和定义的区别">
-<meta name="twitter:description" content="声明使得名字为程序所知，而定义负责创建与名字关联的实体。变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。
-如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量">
+<meta name="twitter:title" content="C++中const的用法">
+<meta name="twitter:description" content="const变量const又叫做const限定符，用关键字const对变量的类型加以限定，可以使得变量的值不能被改变。">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -150,38 +147,47 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test-1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-const" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      C和C++中声明和定义的区别
+      C++中const的用法
     </h1>
   
 
         
-        <a href="/2017/03/10/test-1/" class="archive-article-date">
-  	<time datetime="2017-03-09T16:07:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+        <a href="/2017/03/10/const/" class="archive-article-date">
+  	<time datetime="2017-03-10T04:30:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>声明使得名字为程序所知，而定义负责创建与名字关联的实体。<br>变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。</p>
-<p>如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">extern int i；               //声明i而不是定义i</div><div class="line"></div><div class="line">int j;                      //声明并且定义了j</div></pre></td></tr></table></figure></p>
-<p>任何包含了显式初始化的声明即成为定义。</p>
+        <h3 id="const变量"><a href="#const变量" class="headerlink" title="const变量"></a>const变量</h3><p>const又叫做const限定符，用关键字const对变量的类型加以限定，可以使得变量的值不能被改变。<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const int i = 1;  //正确：编译时初始化</div><div class="line">const int i = get_size();   //正确：运行时初始化</div><div class="line">const int k;   //错误：k是一个未经初始化的常量</div></pre></td></tr></table></figure>
+<p>没有初始化的常量变量编译错误其实很好理解，因为经过const限定之后变量的值已经无法改变，如果没有初始化那么这个变量的值不确定，且之后其值不能被改变。</p>
 <hr>
-<p><font color="red">在函数体内部，如果试图初始化一个由extern关键字标记的变量，将引发错误。</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">	extern int i = 3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">error: ‘i’ has both ‘extern’ and initializer</div><div class="line">extern int i = 3;</div><div class="line">             ^</div></pre></td></tr></table></figure>
+<h3 id="const引用"><a href="#const引用" class="headerlink" title="const引用"></a>const引用</h3><p>const引用称为对常量的引用，简称为“常量引用”,顾名思义，就是这个对象是一个引用，而且这个对象经过const限定符作用之后，对象的值不能被改变。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">int main() &#123;</div><div class="line">	const int c1 = 10;</div><div class="line">	const int &amp;r1 = c1;</div><div class="line">	int c2 = 4;</div><div class="line">	const int &amp;r2 = c2;</div><div class="line">    c2 = 5;</div><div class="line">	cout &lt;&lt; r2 &lt;&lt; endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如上所示，常量引用r1,r2是一个常量，而同时，因为const的限制，r1和r2的值不能改变，所以通过r1和r2修改c1和c2的值也就不可能，但是c2因为没有const的限制，可以通过c2修改自身的值。</p>
+<p><font color="red">引用的类型必须与其引用对象的类型一致，但存在例外。一种则是允许常量引用绑定一个非常量的对象，但是不能通过该常量引用改变绑定对象的值，此种情况上面已经出现，不在赘述。另一种是在初始化常量引用时允许用任意表达式作为初始值，只要该表达式的结果能转化为引用的类型即可。</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">double dval = 3.14;</div><div class="line">const int &amp;ri = dval;</div></pre></td></tr></table></figure></p>
+<p>上述代码是合法的操作c<br>机制是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">const int temp = dval;</div><div class="line">const int &amp;ri = temp;</div></pre></td></tr></table></figure></p>
+<p>也就是先将dval转化为整型，注意，其中的temp是临时量，所谓临时量对象就是当编译器需要一个空间来暂存表达式的求值结果临时创建的一个未命名的对象。<br>而如果ri不是常量，即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">double dval = 3.14;</div><div class="line">int &amp;r1 = dval;</div></pre></td></tr></table></figure></p>
+<p>此时编译器会报错，错误如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">error: invalid initialization of non-const reference of type ‘int&amp;’ from an rvalue of type ‘int’</div><div class="line">int &amp;r1 = dval;</div></pre></td></tr></table></figure></p>
+<h3 id="指针和const"><a href="#指针和const" class="headerlink" title="指针和const"></a>指针和const</h3><p>与引用一样，也可以令指针指向常量或非常量，类似于常量引用，指向常量的指针（不是常量指针）不能用于改变其所指对象的值。<strong>要想存放常量对象的地址，只能使用指向常量的指针</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const double pi = 3.14;</div><div class="line">double *ptr = &amp;pi;   //错误：ptr是一个普通指针</div><div class="line">const double *cptr = &amp;pi;   //正确：cptr可以指向一个常量</div><div class="line">*cptr = 42;   //错误：不能给*cptr赋值</div></pre></td></tr></table></figure></p>
+<p>同样，指针的类型必须与其所指对象的类型一致，但是与引用一样，存在例外，允许一个指向常量的指针指向一个非常量的对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">double dval = 3.14;</div><div class="line">const double *cptr = &amp;dval;   //不能通过cptr改变dval的值</div></pre></td></tr></table></figure></p>
 <hr>
-<p>如果要在多个文件中使用同一个变量，就必须将声明和定义分离。此时，变量的定义必须出现在且只能出现在一个文件中，而其他用到变量的文件必须对其进行声明，却绝对不能重复定义。</p>
-<p><font color="red">正确的用法如下：</font></p>
+<p>指针是对象而引用不是，所以允许把指针本身定为常量。常量指针必须初始化，一旦初始化完成，则指针的值不能被修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int errNumb = 0;</div><div class="line">int *const curErr = &amp;errNumb;</div><div class="line">const double pi = 3.14;</div><div class="line">const double *const pip = &amp;pi;</div></pre></td></tr></table></figure></p>
+<p>将<em>号放在const关键字之前用以说明指针是一个常量，不变的是指针本身的值而非指向的那个值。<br>从右向左阅读解析，如上面代码第二行中，离curErr最近的符号是const，意味着curErr本身是一个常量对象，对象的类型由声明符的其余部分确定。声明符中的下一个符号是</em>，意思是curErr是一个常量指针。最后，声明语句的基本数据类型部分确定了常量指针指向的是一个int对象。同理，我们可以看出pip是一个常量指针，指向的对象是一个双精度浮点型常量。</p>
 <hr>
-<p>test.hpp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int i = 2;</div></pre></td></tr></table></figure></p>
-<p>test.cpp<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &quot;test.hpp&quot;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">extern int i;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">	cout &lt;&lt; i;</div><div class="line">	i = 1;</div><div class="line">	cout &lt;&lt; endl &lt;&lt; i;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>指向常量的指针和常量指针的对比</strong><br>指向常量的指针是指指针指向的值是一个常量（存在上述的例外），这就说明指针的值是可以被改变的，而常量指针是指指针本身是一个常量，但是指针指向的值不一定是常量。</p>
+<hr>
+<h3 id="顶层const"><a href="#顶层const" class="headerlink" title="顶层const"></a>顶层const</h3><p>指针本身是不是常量以及指针所指的是不是一个常量是两个相互独立的问题。用名词顶层const(top-level const)表示指针本身是个常量，而用名词底层const(low-level const)表示指针所指的对象是一个常量。<br>更一般的，顶层const可以表示任意的对象是常量，这一点对任何数据类型都适用；底层const则与指针和引用等复合类型的基本类型部分有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int i = 0;</div><div class="line">int *const pl = &amp;i;   //顶层</div><div class="line">const int ci = 42;   //顶层</div><div class="line">const int *p2 = &amp;ci;   //底层</div><div class="line">const int *const p3 = p2;   //左边是底层，右边是顶层</div><div class="line">const int &amp;r = ci;   //用于声明引用的const都是底层const</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="常量表达式"><a href="#常量表达式" class="headerlink" title="常量表达式"></a>常量表达式</h3><p>常量表达式是<strong>指值不会改变</strong>并且<strong>在编译过程就能得到计算结果</strong>的表达式。<br>一个对象（或表达式）是不是常量表达式由它的数据类型和初始值共同决定，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const int max_files = 20;   //是常量表达式</div><div class="line">const int limit = max_files + 1;   //是常量表达式</div><div class="line">int staff_size = 27;   //不是常量表达式，因为只是int类型</div><div class="line">const int sz = get_size();   //不是，sz的值要到运行时确定</div></pre></td></tr></table></figure></p>
 
       
 
@@ -216,7 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		
 		</ul>
@@ -272,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/test-1/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/const/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -286,15 +292,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/10/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
+    <a href="/2017/03/10/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
