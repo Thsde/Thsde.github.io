@@ -12,9 +12,7 @@
 
 程序计数器 (program counter)
 堆栈段 (stack)
-数据段 (data section)
-
-程序包括代码段、当前活动（通过PC的值和处理器寄存器的内容来表示）、堆栈段（包括临时数据，如函数参数、返回地址和局部变量）和数据段（包括全局变量），可能还包括堆(heap)">
+数据段 (data section)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程">
 <meta property="og:url" content="http://yoursite.com/2017/03/12/进程/index.html">
@@ -23,23 +21,19 @@
 
 程序计数器 (program counter)
 堆栈段 (stack)
-数据段 (data section)
-
-程序包括代码段、当前活动（通过PC的值和处理器寄存器的内容来表示）、堆栈段（包括临时数据，如函数参数、返回地址和局部变量）和数据段（包括全局变量），可能还包括堆(heap)">
+数据段 (data section)">
 <meta property="og:image" content="http://yoursite.com/img/process_in_memory.png">
 <meta property="og:image" content="http://yoursite.com/img/process_states.png">
 <meta property="og:image" content="http://yoursite.com/img/process_creation.png">
 <meta property="og:image" content="http://yoursite.com/img/communication_models.png">
-<meta property="og:updated_time" content="2017-03-13T01:18:55.928Z">
+<meta property="og:updated_time" content="2017-03-13T01:21:29.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程">
 <meta name="twitter:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行。一个进程包括以下三个方面
 
 程序计数器 (program counter)
 堆栈段 (stack)
-数据段 (data section)
-
-程序包括代码段、当前活动（通过PC的值和处理器寄存器的内容来表示）、堆栈段（包括临时数据，如函数参数、返回地址和局部变量）和数据段（包括全局变量），可能还包括堆(heap)">
+数据段 (data section)">
 <meta name="twitter:image" content="http://yoursite.com/img/process_in_memory.png">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
@@ -196,6 +190,7 @@
 <li>堆栈段 (stack)</li>
 <li>数据段 (data section)</li>
 </ul>
+<a id="more"></a>
 <p>程序包括代码段、当前活动（通过PC的值和处理器寄存器的内容来表示）、堆栈段（包括临时数据，如函数参数、返回地址和局部变量）和数据段（包括全局变量），可能还包括堆(heap)，进程在运行期间动态分配的内存。</p>
 <p>如下图所示：</p>
 <blockquote>
@@ -264,7 +259,7 @@
 <blockquote>
 <p>为了允许生产者进程和消费者进程能并发执行，必须要有一个缓冲来被生产者填充并被消费者所使用。此缓冲驻留在生产者进程和消费者进程的共享内存区域内，当消费者使用一项时，生产者能产生另一项。生产者和消费者必须同步，以免消费者消费一个没有生产出来的项。</p>
 </blockquote>
-<p>缓冲主要存在两：</p>
+<p>缓冲主要存在两种：</p>
 <blockquote>
 <p>1、无限缓冲(unbounded-buffer)：对缓冲大小没有限制。消费者可能不得不等待新的项，但生产者总是可以产生新项<br>2、有限缓冲(bounded-buffer)：缓冲固定，若缓冲为空，消费者必须等待；若缓冲为满，生产者必须等待</p>
 </blockquote>
@@ -319,6 +314,7 @@
 </ul>
 </blockquote>
 <p><strong>零容量情况称为没有缓冲的消息系统，其他情况称为自动缓冲。</strong></p>
+<hr>
 <h3 id="Communication-in-Client-Server"><a href="#Communication-in-Client-Server" class="headerlink" title="Communication in Client-Server"></a>Communication in Client-Server</h3>
       
 
@@ -547,6 +543,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -555,15 +555,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
