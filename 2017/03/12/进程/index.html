@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://yoursite.com/img/process_states.png">
 <meta property="og:image" content="http://yoursite.com/img/process_creation.png">
 <meta property="og:image" content="http://yoursite.com/img/communication_models.png">
-<meta property="og:updated_time" content="2017-03-13T13:37:36.041Z">
+<meta property="og:updated_time" content="2017-03-13T13:48:47.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程">
 <meta name="twitter:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行。一个进程包括以下三个方面
@@ -66,7 +66,7 @@
 			<img src="/img/my_head3.jpeg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Th</a></h1>
+		  <h1 class="header-author"><a href="/">案发那天狗没叫</a></h1>
 		</hgroup>
 		
 
@@ -81,10 +81,6 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -122,7 +118,7 @@
 				<img src="/img/my_head3.jpeg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">Th</h1>
+			  <h1 class="header-author js-header-author">案发那天狗没叫</h1>
 			</hgroup>
 			
 			
@@ -184,7 +180,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Process-Concept"><a href="#Process-Concept" class="headerlink" title="Process Concept"></a>Process Concept</h3><p>简单来说，进程就是指<strong>正在执行的程序，执行并不一定是在运行</strong>。<br>一个进程包括以下三个方面</p>
+        <h2 id="Process-Concept"><a href="#Process-Concept" class="headerlink" title="Process Concept"></a>Process Concept</h2><p>简单来说，进程就是指<strong>正在执行的程序，执行并不一定是在运行</strong>。<br>一个进程包括以下三个方面</p>
 <ul>
 <li>程序计数器 (program counter)</li>
 <li>堆栈段 (stack)</li>
@@ -197,7 +193,7 @@
 <p><img src="/img/process_in_memory.png" alt="process_in_memory.png"></p>
 </blockquote>
 <hr>
-<h3 id="Process-State"><a href="#Process-State" class="headerlink" title="Process State"></a>Process State</h3><ul>
+<h2 id="Process-State"><a href="#Process-State" class="headerlink" title="Process State"></a>Process State</h2><ul>
 <li>new(创建): The proces is being created</li>
 <li>running(运行): <strong>Instructions</strong> are being executed</li>
 <li>waiting(等待): The process is waiting for some event to occur</li>
@@ -209,7 +205,7 @@
 <p><img src="/img/process_states.png" alt="process_states.png"></p>
 <hr>
 </blockquote>
-<h3 id="Process-Control-Block-PCB"><a href="#Process-Control-Block-PCB" class="headerlink" title="Process Control Block(PCB)"></a>Process Control Block(PCB)</h3><p>每个进程在操作系统内用进程控制块来表示，它包含许多与一个特定进程相关的信息。</p>
+<h2 id="Process-Control-Block-PCB"><a href="#Process-Control-Block-PCB" class="headerlink" title="Process Control Block(PCB)"></a>Process Control Block(PCB)</h2><p>每个进程在操作系统内用进程控制块来表示，它包含许多与一个特定进程相关的信息。</p>
 <ul>
 <li>Process state: 包括创建、就绪、运行、等待、停止等</li>
 <li>Program counter: 表示进程要执行的下个指令的地址</li>
@@ -220,7 +216,7 @@
 <li>I/O status information</li>
 </ul>
 <hr>
-<h3 id="Process-Scheduling"><a href="#Process-Scheduling" class="headerlink" title="Process Scheduling"></a>Process Scheduling</h3><p>为了最大效率地利用CPU，<strong>进程调度</strong>选择一个可用的进程到CPU上执行。</p>
+<h2 id="Process-Scheduling"><a href="#Process-Scheduling" class="headerlink" title="Process Scheduling"></a>Process Scheduling</h2><p>为了最大效率地利用CPU，<strong>进程调度</strong>选择一个可用的进程到CPU上执行。</p>
 <h6 id="Process-Scheduling-Queues-调度队列"><a href="#Process-Scheduling-Queues-调度队列" class="headerlink" title="Process Scheduling Queues(调度队列)"></a>Process Scheduling Queues(调度队列)</h6><ul>
 <li>Job queue – set of all processes in the system</li>
 <li>Ready queue – set of all processes residing in main memory, ready and waiting to execute</li>
@@ -236,7 +232,7 @@
 <p><strong>长期调度程序被调用的频率比较低，短期调度程序被调用的频率比较高</strong></p>
 <h6 id="Context-Switch-上下文切换"><a href="#Context-Switch-上下文切换" class="headerlink" title="Context Switch(上下文切换)"></a>Context Switch(上下文切换)</h6><p>将CPU切换到另一个进程需要保存当前进程的状态（保存在PCB中）并恢复另一个进程的状态，这一任务称为上下文切换</p>
 <hr>
-<h3 id="Operations-on-Processes-进程操作"><a href="#Operations-on-Processes-进程操作" class="headerlink" title="Operations on Processes(进程操作)"></a>Operations on Processes(进程操作)</h3><h6 id="进程创建-Process-Creation"><a href="#进程创建-Process-Creation" class="headerlink" title="进程创建(Process Creation)"></a>进程创建(Process Creation)</h6><p>进程在其执行过程中，能通过创建进程系统调用创建多个新进程。创建进程称为父进程，而新进程称为子进程。每个新进程可以在创建其他进程，从而行程了进程树。</p>
+<h2 id="Operations-on-Processes-进程操作"><a href="#Operations-on-Processes-进程操作" class="headerlink" title="Operations on Processes(进程操作)"></a>Operations on Processes(进程操作)</h2><h6 id="进程创建-Process-Creation"><a href="#进程创建-Process-Creation" class="headerlink" title="进程创建(Process Creation)"></a>进程创建(Process Creation)</h6><p>进程在其执行过程中，能通过创建进程系统调用创建多个新进程。创建进程称为父进程，而新进程称为子进程。每个新进程可以在创建其他进程，从而行程了进程树。</p>
 <p><img src="/img/process_creation.png" alt="process_creation.png"></p>
 <p>创建进程的两种可能：</p>
 <blockquote>
@@ -255,7 +251,7 @@
 <p>1、子进程使用了超过它被分配的一些资源<br>2、分配给子进程的任务已不再需要<br>3、父进程退出，如果父进程退出，操作系统不允许子进程继续，这称为级联终止(cascading termination)</p>
 </blockquote>
 <hr>
-<h3 id="Cooperating-Processes-协作进程"><a href="#Cooperating-Processes-协作进程" class="headerlink" title="Cooperating Processes(协作进程)"></a>Cooperating Processes(协作进程)</h3><p>生产者-消费者问题是协作进程的通用范例。生产者进程产生信息以供消费者进程消费。</p>
+<h2 id="Cooperating-Processes-协作进程"><a href="#Cooperating-Processes-协作进程" class="headerlink" title="Cooperating Processes(协作进程)"></a>Cooperating Processes(协作进程)</h2><p>生产者-消费者问题是协作进程的通用范例。生产者进程产生信息以供消费者进程消费。</p>
 <blockquote>
 <p>为了允许生产者进程和消费者进程能并发执行，必须要有一个缓冲来被生产者填充并被消费者所使用。此缓冲驻留在生产者进程和消费者进程的共享内存区域内，当消费者使用一项时，生产者能产生另一项。生产者和消费者必须同步，以免消费者消费一个没有生产出来的项。</p>
 </blockquote>
@@ -264,7 +260,7 @@
 <p>1、无限缓冲(unbounded-buffer)：对缓冲大小没有限制。消费者可能不得不等待新的项，但生产者总是可以产生新项<br>2、有限缓冲(bounded-buffer)：缓冲固定，若缓冲为空，消费者必须等待；若缓冲为满，生产者必须等待</p>
 </blockquote>
 <hr>
-<h3 id="Interprocess-Communication-进程间通信IPC"><a href="#Interprocess-Communication-进程间通信IPC" class="headerlink" title="Interprocess Communication(进程间通信IPC)"></a>Interprocess Communication(进程间通信IPC)</h3><p>通信模型：</p>
+<h2 id="Interprocess-Communication-进程间通信IPC"><a href="#Interprocess-Communication-进程间通信IPC" class="headerlink" title="Interprocess Communication(进程间通信IPC)"></a>Interprocess Communication(进程间通信IPC)</h2><p>通信模型：</p>
 <blockquote>
 <p><img src="/img/communication_models.png" alt="communication_models.png"></p>
 </blockquote>
@@ -315,7 +311,7 @@
 </blockquote>
 <p><strong>零容量情况称为没有缓冲的消息系统，其他情况称为自动缓冲。</strong></p>
 <hr>
-<h3 id="Communication-in-Client-Server"><a href="#Communication-in-Client-Server" class="headerlink" title="Communication in Client-Server"></a>Communication in Client-Server</h3>
+<h2 id="Communication-in-Client-Server"><a href="#Communication-in-Client-Server" class="headerlink" title="Communication in Client-Server"></a>Communication in Client-Server</h2>
       
 
       
@@ -328,7 +324,7 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
                     
@@ -464,7 +460,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 Th
+    		&copy; 2017 案发那天狗没叫
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -504,25 +500,17 @@
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -551,11 +539,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,10 +593,6 @@
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-    	</section>
     
 
     
