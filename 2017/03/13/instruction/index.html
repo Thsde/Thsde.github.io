@@ -6,21 +6,54 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>C和C++中声明和定义的区别 | Th&#39;s blog</title>
+  <title>Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="声明使得名字为程序所知，而定义负责创建与名字关联的实体。变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。
-如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量">
+  <meta name="description" content="Instruction Sets(指令集)
+Concept:指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。
+
+Elements of an Instruction
+Operation code(Opcode) 操作码
+
+表示该指令进行的操作的类型
+
+
+Source Operand Reference 源操作数
+
+该操作所需输入的操">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C和C++中声明和定义的区别">
-<meta property="og:url" content="http://yoursite.com/2017/03/10/test-1/index.html">
+<meta property="og:title" content="Th's blog">
+<meta property="og:url" content="http://yoursite.com/2017/03/13/instruction/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="声明使得名字为程序所知，而定义负责创建与名字关联的实体。变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。
-如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量">
-<meta property="og:updated_time" content="2017-03-13T13:47:34.352Z">
+<meta property="og:description" content="Instruction Sets(指令集)
+Concept:指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。
+
+Elements of an Instruction
+Operation code(Opcode) 操作码
+
+表示该指令进行的操作的类型
+
+
+Source Operand Reference 源操作数
+
+该操作所需输入的操">
+<meta property="og:image" content="http://yoursite.com/home/th/test/blog/source/img/instruction_cycle.png">
+<meta property="og:image" content="http://yoursite.com/home/th/test/blog/source/img/endian.png">
+<meta property="og:updated_time" content="2017-03-14T16:24:00.820Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C和C++中声明和定义的区别">
-<meta name="twitter:description" content="声明使得名字为程序所知，而定义负责创建与名字关联的实体。变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。
-如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量">
+<meta name="twitter:title" content="Th's blog">
+<meta name="twitter:description" content="Instruction Sets(指令集)
+Concept:指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。
+
+Elements of an Instruction
+Operation code(Opcode) 操作码
+
+表示该指令进行的操作的类型
+
+
+Source Operand Reference 源操作数
+
+该操作所需输入的操">
+<meta name="twitter:image" content="http://yoursite.com/home/th/test/blog/source/img/instruction_cycle.png">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -146,38 +179,105 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test-1" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-instruction" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      C和C++中声明和定义的区别
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/test-1/" class="archive-article-date">
-  	<time datetime="2017-03-09T16:07:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>声明使得名字为程序所知，而定义负责创建与名字关联的实体。<br>变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。</p>
-<p>如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量<br><a id="more"></a><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i；               <span class="comment">//声明i而不是定义i</span></div><div class="line"></div><div class="line"><span class="keyword">int</span> j;                      <span class="comment">//声明并且定义了j</span></div></pre></td></tr></table></figure></p>
-<p>任何包含了显式初始化的声明即成为定义。</p>
+        <h1 id="Instruction-Sets-指令集"><a href="#Instruction-Sets-指令集" class="headerlink" title="Instruction Sets(指令集)"></a>Instruction Sets(指令集)</h1><hr>
+<h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3><p>指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。</p>
 <hr>
-<p><font color="red">在函数体内部，如果试图初始化一个由extern关键字标记的变量，将引发错误。</font><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">extern</span> <span class="keyword">int</span> i = <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">error: ‘i’ has both ‘<span class="keyword">extern</span>’ and initializer</div><div class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i = <span class="number">3</span>;</div><div class="line">             ^</div></pre></td></tr></table></figure>
-<hr>
-<p>如果要在多个文件中使用同一个变量，就必须将声明和定义分离。此时，变量的定义必须出现在且只能出现在一个文件中，而其他用到变量的文件必须对其进行声明，却绝对不能重复定义。</p>
-<p><font color="red">正确的用法如下：</font></p>
-<hr>
-<p>test.hpp<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> i = <span class="number">2</span>;</div></pre></td></tr></table></figure></p>
-<p>test.cpp<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"test.hpp"</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; i;</div><div class="line">	i = <span class="number">1</span>;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; i;</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Elements-of-an-Instruction"><a href="#Elements-of-an-Instruction" class="headerlink" title="Elements of an Instruction"></a>Elements of an Instruction</h3><ul>
+<li><p>Operation code(Opcode) 操作码</p>
+<blockquote>
+<p>表示该指令进行的操作的类型</p>
+</blockquote>
+</li>
+<li><p>Source Operand Reference 源操作数</p>
+<blockquote>
+<p>该操作所需输入的操作数</p>
+</blockquote>
+</li>
+<li><p>Result Operand Reference 目标操作数</p>
+<blockquote>
+<p>操作产生的需要存储的结果</p>
+</blockquote>
+</li>
+<li><p>Next Instruction Reference 下一条指令地址</p>
+<blockquote>
+<p>告诉CPU当前指令完成后下一条指令的地址</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Instruction-Representation"><a href="#Instruction-Representation" class="headerlink" title="Instruction Representation"></a>Instruction Representation</h3><ul>
+<li>机器码：指令(无论操作数还是操作码)都是无差别地以二进制的形式存储</li>
+<li>汇编语言：操作码用缩写的形式(助记符)表示，说明该指令进行的操作的类型，操作数也以相应的符号来表示<br><img src="/home/th/test/blog/source/img/instruction_cycle.png" alt="instruction_cycle.png"></li>
+</ul>
+<h3 id="Instruction-Types"><a href="#Instruction-Types" class="headerlink" title="Instruction Types"></a>Instruction Types</h3><ul>
+<li>Data processing(数据处理)</li>
+<li>Data Storage(数据存储)</li>
+<li>Data movement(I/O)</li>
+<li>Control(控制)</li>
+</ul>
+<h3 id="Instruction-Set-Design"><a href="#Instruction-Set-Design" class="headerlink" title="Instruction Set Design"></a>Instruction Set Design</h3><ul>
+<li>Operation repertoire(操作类型储备)</li>
+</ul>
+<ol>
+<li>How many ops?</li>
+<li>What can they do?</li>
+<li>How complex are they?</li>
+</ol>
+<ul>
+<li>Data types(数据类型)</li>
+<li>Insturctoin formats(指令格式)</li>
+</ul>
+<ol>
+<li>Length of opcode field</li>
+<li>Number of addresses</li>
+</ol>
+<ul>
+<li>Registers</li>
+</ul>
+<ol>
+<li>Number of CPU registers availiable</li>
+<li>Which operations can be performed on which registers?</li>
+</ol>
+<ul>
+<li>Addressing modes(寻址模式)</li>
+</ul>
+<h3 id="Types-of-Operand"><a href="#Types-of-Operand" class="headerlink" title="Types of Operand"></a>Types of Operand</h3><ul>
+<li>Addresses</li>
+<li>Numbers</li>
+<li>Charcters</li>
+<li>Logical Data</li>
+</ul>
+<h3 id="Types-of-Operation"><a href="#Types-of-Operation" class="headerlink" title="Types of Operation"></a>Types of Operation</h3><ul>
+<li>Data Transfer(数据传输)</li>
+<li>Arithmetic(算术运算)</li>
+<li>Logical(逻辑运算)</li>
+<li>Conversion(转换):转换数据的形式，如十进制转为二进制</li>
+<li>I/O</li>
+<li>System Control</li>
+<li>Transfer of Control(控制转换)：例如跳转，子程序调用</li>
+</ul>
+<h3 id="Byte-Order-位元组顺序"><a href="#Byte-Order-位元组顺序" class="headerlink" title="Byte Order(位元组顺序)"></a>Byte Order(位元组顺序)</h3><ul>
+<li>little-endian(小端规则):LSB(最低有效位，即最左边的位)存储在低位的地址之中。</li>
+<li>big-endian(大端规则):LSB存储在高位的地址之中。<blockquote>
+<p>0x12345678存储<br><img src="/home/th/test/blog/source/img/endian.png" alt="endian.png"><br>左边为大端规则，右边为小端规则</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Addressing-Modes-寻址方式"><a href="#Addressing-Modes-寻址方式" class="headerlink" title="Addressing Modes(寻址方式)"></a>Addressing Modes(寻址方式)</h3><p>说明如何获取指令中操作数和下一条指令,经常不止一种寻址方式被使用，不同的操作码使用不同的寻址方式，指令中的方式字段说明寻址的方式。</p>
+<ul>
+<li>Immediate (立即寻址)</li>
+<li>Direct (直接寻址)</li>
+<li>Indirect (间接寻址)</li>
+<li>Register (寄存器寻址)</li>
+<li>Register Indirect (寄存器间接寻址)</li>
+<li>Displacement (Indexed) (偏移寻址)</li>
+<li>Stack (堆栈寻址)</li>
+</ul>
+<p>速度排序：<br>立即寻址 &gt; 寄存器寻址 &gt; 直接寻址 &gt; 寄存器间接寻址 &gt; 间接寻址</p>
 
       
 
@@ -212,7 +312,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机组成</a>
         		</li>
       		
 		</ul>
@@ -268,7 +368,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/test-1/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/13/instruction/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,15 +382,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/10/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
+    <a href="/2017/03/12/进程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">进程</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -302,7 +398,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="test-1" data-title="C和C++中声明和定义的区别" data-url="http://yoursite.com/2017/03/10/test-1/"></div>
+	<div class="ds-thread" data-thread-key="instruction" data-title="" data-url="http://yoursite.com/2017/03/13/instruction/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
