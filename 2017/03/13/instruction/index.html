@@ -9,50 +9,20 @@
   <title>指令集 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Instruction Sets(指令集)
-Concept:指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。
-
-Elements of an Instruction
-Operation code(Opcode) 操作码
-
-表示该指令进行的操作的类型
-
-
-Source Operand Reference 源操作数
-
-该操作所需输入的操">
+Concept:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="指令集">
 <meta property="og:url" content="http://yoursite.com/2017/03/13/instruction/index.html">
 <meta property="og:site_name" content="Th's blog">
 <meta property="og:description" content="Instruction Sets(指令集)
-Concept:指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。
-
-Elements of an Instruction
-Operation code(Opcode) 操作码
-
-表示该指令进行的操作的类型
-
-
-Source Operand Reference 源操作数
-
-该操作所需输入的操">
+Concept:">
 <meta property="og:image" content="http://yoursite.com/home/th/test/blog/source/img/instruction_cycle.png">
 <meta property="og:image" content="http://yoursite.com/home/th/test/blog/source/img/endian.png">
-<meta property="og:updated_time" content="2017-03-15T01:35:54.982Z">
+<meta property="og:updated_time" content="2017-03-15T08:07:17.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指令集">
 <meta name="twitter:description" content="Instruction Sets(指令集)
-Concept:指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。
-
-Elements of an Instruction
-Operation code(Opcode) 操作码
-
-表示该指令进行的操作的类型
-
-
-Source Operand Reference 源操作数
-
-该操作所需输入的操">
+Concept:">
 <meta name="twitter:image" content="http://yoursite.com/home/th/test/blog/source/img/instruction_cycle.png">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
@@ -200,7 +170,8 @@ Source Operand Reference 源操作数
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Instruction-Sets-指令集"><a href="#Instruction-Sets-指令集" class="headerlink" title="Instruction Sets(指令集)"></a>Instruction Sets(指令集)</h1><hr>
-<h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3><p>指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。</p>
+<h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3><a id="more"></a>
+<p>指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。</p>
 <hr>
 <h3 id="Elements-of-an-Instruction"><a href="#Elements-of-an-Instruction" class="headerlink" title="Elements of an Instruction"></a>Elements of an Instruction</h3><ul>
 <li><p>Operation code(Opcode) 操作码</p>
@@ -282,17 +253,22 @@ Source Operand Reference 源操作数
 </blockquote>
 </li>
 </ul>
-<h3 id="Addressing-Modes-寻址方式"><a href="#Addressing-Modes-寻址方式" class="headerlink" title="Addressing Modes(寻址方式)"></a>Addressing Modes(寻址方式)</h3><p>说明如何获取指令中操作数和下一条指令,经常不止一种寻址方式被使用，不同的操作码使用不同的寻址方式，指令中的方式字段说明寻址的方式。</p>
+<h3 id="Addressing-Modes-寻址模式"><a href="#Addressing-Modes-寻址模式" class="headerlink" title="Addressing Modes(寻址模式)"></a>Addressing Modes(寻址模式)</h3><p>根据对操作数和/或地址的使用不同加以区分的多种寻址方式中的一种<br>说明如何获取指令中操作数和下一条指令,经常不止一种寻址方式被使用，不同的操作码使用不同的寻址方式，指令中的方式字段说明寻址的方式。</p>
 <ul>
-<li>Immediate (立即寻址)</li>
-<li>Direct (直接寻址)</li>
-<li>Indirect (间接寻址)</li>
-<li>Register (寄存器寻址)</li>
-<li>Register Indirect (寄存器间接寻址)</li>
-<li>Displacement (Indexed) (偏移寻址)</li>
-<li>Stack (堆栈寻址)</li>
+<li>Immediate (立即寻址)：操作数是位于指令自身中的常数</li>
+<li>Direct (直接寻址)：指令中存储的是操作数的地址</li>
+<li>Indirect (间接寻址)：指令中存储的是操作数的地址的地址</li>
+<li>Register (寄存器寻址)：操作数是寄存器</li>
+<li>Register Indirect (寄存器间接寻址)：对寄存器访问取得操作数地址</li>
+<li>Displacement (Indexed) (偏移寻址)：操作数在内存中，其地址是指令中基址寄存器和常数的和</li>
+<li>Stack (堆栈寻址)：<a href="http://blog.csdn.net/new_eggs/article/details/8642785" target="_blank" rel="external">详情点击</a></li>
 </ul>
 <p>速度排序：<br>立即寻址 &gt; 寄存器寻址 &gt; 直接寻址 &gt; 寄存器间接寻址 &gt; 间接寻址</p>
+<h3 id="RISC-vs-CISC"><a href="#RISC-vs-CISC" class="headerlink" title="RISC vs CISC"></a>RISC vs CISC</h3><p>CISC：复杂指令集，有大量的变长的，复杂结构的指令，可以完成复杂的任务<br>RISC：精简指令集，减少了大量非必须指令且简化了剩余的指令使其执行速度加快。<br>特征如下：</p>
+<ul>
+<li>所有指令定长（4个字节），通过补0实现使CPU能够快速解码</li>
+<li>指令只能从内存加载到寄存器或从寄存器存储到内存</li>
+</ul>
 
       
 
@@ -522,11 +498,11 @@ Source Operand Reference 源操作数
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基本技术</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color5">基本技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,7 +510,7 @@ Source Operand Reference 源操作数
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -542,7 +518,7 @@ Source Operand Reference 源操作数
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
              
               <li class="article-tag-list-item">

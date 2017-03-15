@@ -161,25 +161,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <font color="red">文中代码部分及部分讲解转载自陈皓gdb教程相关博客</font>
+        <font color=red>文中代码部分及部分讲解转载自陈皓gdb教程相关博客</font>
 
-<h3 id="What-is-GDB"><a href="#What-is-GDB" class="headerlink" title="What is GDB?"></a>What is GDB?</h3><blockquote>
-<p>GDB, the GNU Project debugger, allows you to see what is going on `inside’ another program while it executes – or what another program was doing at the moment it crashed.<br>GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act:<br>Start your program, specifying anything that might affect its behavior.<br>Make your program stop on specified conditions.<br>Examine what has happened, when your program has stopped.<br>Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.<br>The program being debugged can be written in Ada, C, C++, Objective-C, Pascal (and many other languages). Those programs might be executing on the same machine as GDB (native) or on another machine (remote). GDB can run on most popular UNIX and Microsoft Windows variants.</p>
-</blockquote>
-<p>简单来说，GDB就是一个DEBUG的工具</p>
-<hr>
-<h3 id="GDB-安装"><a href="#GDB-安装" class="headerlink" title="GDB 安装"></a>GDB 安装</h3><p>Linux系统下：<br>终端运行如下命令<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install gdb</div></pre></td></tr></table></figure></p>
-<p>Windows系统下：<br>下载MinGw或者TDM-GCC然后配置一下环境变量就可以在CMD中使用了。<br>安装完成后输入：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb -v</div></pre></td></tr></table></figure></p>
-<p>出现如下提示表示安装成功：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">GNU gdb (Debian 7.11.1-2) 7.11.1</div><div class="line">Copyright (C) 2016 Free Software Foundation, Inc.</div><div class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.  Type "show copying"</div><div class="line">and "show warranty" for details.</div><div class="line">This GDB was configured as "x86_64-linux-gnu".</div><div class="line">Type "show configuration" for configuration details.</div><div class="line">For bug reporting instructions, please see:</div><div class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;.</div><div class="line">Find the GDB manual and other documentation resources online at:</div><div class="line">&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</div><div class="line">For help, type "help".</div><div class="line">Type "apropos word" to search for commands related to "word".</div></pre></td></tr></table></figure></p>
-<h3 id="编译说明"><a href="#编译说明" class="headerlink" title="编译说明"></a>编译说明</h3><p>要使用gdb调试程序，必须在进行编译时（g++或gcc）加入-g选项进行编译：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ test.cpp -g</div></pre></td></tr></table></figure></p>
-<h3 id="运行GDB"><a href="#运行GDB" class="headerlink" title="运行GDB"></a>运行GDB</h3><p>linux系统下编译链接默认生成a.out文件，所以在a.out文件所在目录下执行：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb a.out</div></pre></td></tr></table></figure></p>
-<p>windows系统下默认生成a.exe，同理在a.exe文件所在目录下执行：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb a.exe</div></pre></td></tr></table></figure></p>
-<h3 id="调试实例"><a href="#调试实例" class="headerlink" title="调试实例"></a>调试实例</h3><p>test.c:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>,i;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++) &#123;</div><div class="line">        sum+=i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++) &#123;</div><div class="line">        result += i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"result[1-100] = %d \n"</span>, result );</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"result[1-250] = %d \n"</span>, func(<span class="number">250</span>) );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">(gdb) b <span class="number">12</span>     <span class="comment">//设置断点，break的缩写，在源程序第12行处。</span></div><div class="line">Breakpoint <span class="number">1</span> at <span class="number">0x6e6</span>: file test.c, line <span class="number">12.</span></div><div class="line">(gdb) b func    <span class="comment">//设置断点，在函数func()入口处。</span></div><div class="line">Breakpoint <span class="number">2</span> at <span class="number">0x8048456</span>: file tst.c, line <span class="number">3.</span></div><div class="line">(gdb) info b   <span class="comment">//查看断点信息</span></div><div class="line">Num     Type           Disp Enb Address            What</div><div class="line"><span class="number">1</span>       breakpoint     keep y   <span class="number">0x00000000000006e6</span> in main at test.c:<span class="number">12</span></div><div class="line"><span class="number">2</span>       breakpoint     keep y   <span class="number">0x00000000000006b7</span> in func at test.c:<span class="number">4</span></div><div class="line">(gdb) r   <span class="comment">//运行程序，run的缩写</span></div><div class="line">Starting program:</div><div class="line"></div><div class="line">Breakpoint <span class="number">1</span>, main () at test.c:<span class="number">13</span></div><div class="line"><span class="number">13</span>	    <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">(gdb) n   <span class="comment">//next的缩写，执行下一步</span></div><div class="line"><span class="number">14</span>	    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++) &#123;</div><div class="line">(gdb) n</div><div class="line"><span class="number">15</span>	        result += i;</div><div class="line">(gdb) n</div><div class="line"><span class="number">14</span>	    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++) &#123;</div><div class="line">(gdb) n</div><div class="line"><span class="number">15</span>	        result += i;</div><div class="line">(gdb) c   <span class="comment">//继续运行程序，continue命令简写。</span></div><div class="line">Continuing.</div><div class="line">result[<span class="number">1</span><span class="number">-100</span>] = <span class="number">5050</span>    <span class="comment">//程序输出。</span></div><div class="line"></div><div class="line">Breakpoint <span class="number">2</span>, func (n=<span class="number">250</span>) at tst.c:<span class="number">5</span></div><div class="line"><span class="number">4</span>                <span class="keyword">int</span> sum=<span class="number">0</span>,i;</div><div class="line">(gdb) n</div><div class="line"><span class="number">5</span>                <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">(gdb) p i    <span class="comment">//打印变量i的值，print命令简写。</span></div><div class="line">$<span class="number">1</span> = <span class="number">134513808</span></div><div class="line">(gdb) n</div><div class="line"><span class="number">6</span>                        sum+=i;</div><div class="line">(gdb) n</div><div class="line"><span class="number">5</span>                <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">(gdb) p sum</div><div class="line">$<span class="number">2</span> = <span class="number">1</span></div><div class="line">(gdb) n</div><div class="line"><span class="number">6</span>                        sum+=i;</div><div class="line">(gdb) p i</div><div class="line">$<span class="number">3</span> = <span class="number">2</span></div><div class="line">(gdb) n</div><div class="line"><span class="number">5</span>                <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">(gdb) p sum</div><div class="line">$<span class="number">4</span> = <span class="number">3</span></div><div class="line">(gdb) bt    <span class="comment">//查看函数堆栈。</span></div><div class="line">#<span class="number">0</span>  func (n=<span class="number">250</span>) at tst.c:<span class="number">5</span></div><div class="line">#<span class="number">1</span>  <span class="number">0x080484e4</span> in main () at tst.c:<span class="number">24</span></div><div class="line">#<span class="number">2</span>  <span class="number">0x400409ed</span> in __libc_start_main () from /lib/libc.so<span class="number">.6</span></div><div class="line">(gdb) finish   <span class="comment">//退出函数。</span></div><div class="line">Run till <span class="built_in">exit</span> from #<span class="number">0</span>  func (n=<span class="number">250</span>) at tst.c:<span class="number">5</span></div><div class="line"><span class="number">0x080484e4</span> in main () at tst.c:<span class="number">24</span></div><div class="line"><span class="number">24</span>              <span class="built_in">printf</span>(<span class="string">"result[1-250] = %d /n"</span>, func(<span class="number">250</span>) );</div><div class="line">Value returned is $<span class="number">6</span> = <span class="number">31375</span></div><div class="line">(gdb) c    <span class="comment">//继续运行。</span></div><div class="line">Continuing.</div><div class="line">result[<span class="number">1</span><span class="number">-250</span>] = <span class="number">31375</span>    <span class="comment">//程序输出。</span></div><div class="line"></div><div class="line">Program exited with code <span class="number">027.</span> <span class="comment">//程序退出，调试结束。</span></div><div class="line">(gdb) q    <span class="comment">//退出gdb。</span></div></pre></td></tr></table></figure>
-<p><strong>step（简写为s）命令和next命令都是执行下一步，不同的是step命令会进入函数的内部，而next命令则是会直接执行完函数，然后在该函数的下一步等待</strong><br>如在上面代码的17行加上func(30)并进行gdb调试；<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Breakpoint <span class="number">1</span>, main () at test.c:<span class="number">17</span></div><div class="line"><span class="number">17</span>	    func(<span class="number">30</span>);</div><div class="line">(gdb) n</div><div class="line"><span class="number">18</span>	    <span class="built_in">printf</span>(<span class="string">"result[1-100] = %d \n"</span>, result );</div></pre></td></tr></table></figure></p>
-<p>使用next命令直接跳到18行等待<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Breakpoint 1, main () at test.c:17</div><div class="line">17	    func(30);</div><div class="line">(gdb) s</div><div class="line">func (n=30) at test.c:4</div><div class="line">4	    int sum=0,i;</div><div class="line">(gdb) s</div><div class="line">5	    for(i=1; i&lt;=n; i++) &#123;</div><div class="line">(gdb) s</div><div class="line">6	        sum+=i;</div><div class="line">(gdb) s</div></pre></td></tr></table></figure></p>
-<p>可以看到，使用s进入到了func函数的内部</p>
-
+<h2 id="What-is-GDB"><a href="#What-is-GDB" class="headerlink" title="What is GDB?"></a>What is GDB?</h2>
+        
+          <a class="article-more-a" href="/2017/03/15/GDB调试/#more">more >></a>
+        
       
 
       
@@ -241,100 +228,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Instruction-Sets-指令集"><a href="#Instruction-Sets-指令集" class="headerlink" title="Instruction Sets(指令集)"></a>Instruction Sets(指令集)</h1><hr>
-<h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3><p>指令集是CPU可以执行的指令的集合，是计算机设计者和计算机程序员之间的接口，CPU的操作由其可以执行的指令集决定。</p>
-<hr>
-<h3 id="Elements-of-an-Instruction"><a href="#Elements-of-an-Instruction" class="headerlink" title="Elements of an Instruction"></a>Elements of an Instruction</h3><ul>
-<li><p>Operation code(Opcode) 操作码</p>
-<blockquote>
-<p>表示该指令进行的操作的类型</p>
-</blockquote>
-</li>
-<li><p>Source Operand Reference 源操作数</p>
-<blockquote>
-<p>该操作所需输入的操作数</p>
-</blockquote>
-</li>
-<li><p>Result Operand Reference 目标操作数</p>
-<blockquote>
-<p>操作产生的需要存储的结果</p>
-</blockquote>
-</li>
-<li><p>Next Instruction Reference 下一条指令地址</p>
-<blockquote>
-<p>告诉CPU当前指令完成后下一条指令的地址</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Instruction-Representation"><a href="#Instruction-Representation" class="headerlink" title="Instruction Representation"></a>Instruction Representation</h3><ul>
-<li>机器码：指令(无论操作数还是操作码)都是无差别地以二进制的形式存储</li>
-<li>汇编语言：操作码用缩写的形式(助记符)表示，说明该指令进行的操作的类型，操作数也以相应的符号来表示<br><img src="/home/th/test/blog/source/img/instruction_cycle.png" alt="instruction_cycle.png"></li>
-</ul>
-<h3 id="Instruction-Types"><a href="#Instruction-Types" class="headerlink" title="Instruction Types"></a>Instruction Types</h3><ul>
-<li>Data processing(数据处理)</li>
-<li>Data Storage(数据存储)</li>
-<li>Data movement(I/O)</li>
-<li>Control(控制)</li>
-</ul>
-<h3 id="Instruction-Set-Design"><a href="#Instruction-Set-Design" class="headerlink" title="Instruction Set Design"></a>Instruction Set Design</h3><ul>
-<li>Operation repertoire(操作类型储备)</li>
-</ul>
-<ol>
-<li>How many ops?</li>
-<li>What can they do?</li>
-<li>How complex are they?</li>
-</ol>
-<ul>
-<li>Data types(数据类型)</li>
-<li>Insturctoin formats(指令格式)</li>
-</ul>
-<ol>
-<li>Length of opcode field</li>
-<li>Number of addresses</li>
-</ol>
-<ul>
-<li>Registers</li>
-</ul>
-<ol>
-<li>Number of CPU registers availiable</li>
-<li>Which operations can be performed on which registers?</li>
-</ol>
-<ul>
-<li>Addressing modes(寻址模式)</li>
-</ul>
-<h3 id="Types-of-Operand"><a href="#Types-of-Operand" class="headerlink" title="Types of Operand"></a>Types of Operand</h3><ul>
-<li>Addresses</li>
-<li>Numbers</li>
-<li>Charcters</li>
-<li>Logical Data</li>
-</ul>
-<h3 id="Types-of-Operation"><a href="#Types-of-Operation" class="headerlink" title="Types of Operation"></a>Types of Operation</h3><ul>
-<li>Data Transfer(数据传输)</li>
-<li>Arithmetic(算术运算)</li>
-<li>Logical(逻辑运算)</li>
-<li>Conversion(转换):转换数据的形式，如十进制转为二进制</li>
-<li>I/O</li>
-<li>System Control</li>
-<li>Transfer of Control(控制转换)：例如跳转，子程序调用</li>
-</ul>
-<h3 id="Byte-Order-位元组顺序"><a href="#Byte-Order-位元组顺序" class="headerlink" title="Byte Order(位元组顺序)"></a>Byte Order(位元组顺序)</h3><ul>
-<li>little-endian(小端规则):LSB(最低有效位，即最左边的位)存储在低位的地址之中。</li>
-<li>big-endian(大端规则):LSB存储在高位的地址之中。<blockquote>
-<p>0x12345678存储<br><img src="/home/th/test/blog/source/img/endian.png" alt="endian.png"><br>左边为大端规则，右边为小端规则</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Addressing-Modes-寻址方式"><a href="#Addressing-Modes-寻址方式" class="headerlink" title="Addressing Modes(寻址方式)"></a>Addressing Modes(寻址方式)</h3><p>说明如何获取指令中操作数和下一条指令,经常不止一种寻址方式被使用，不同的操作码使用不同的寻址方式，指令中的方式字段说明寻址的方式。</p>
-<ul>
-<li>Immediate (立即寻址)</li>
-<li>Direct (直接寻址)</li>
-<li>Indirect (间接寻址)</li>
-<li>Register (寄存器寻址)</li>
-<li>Register Indirect (寄存器间接寻址)</li>
-<li>Displacement (Indexed) (偏移寻址)</li>
-<li>Stack (堆栈寻址)</li>
-</ul>
-<p>速度排序：<br>立即寻址 &gt; 寄存器寻址 &gt; 直接寻址 &gt; 寄存器间接寻址 &gt; 间接寻址</p>
-
+<h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3>
+        
+          <a class="article-more-a" href="/2017/03/13/instruction/#more">more >></a>
+        
       
 
       
@@ -911,11 +808,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基本技术</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color5">基本技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,7 +820,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -931,7 +828,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
              
               <li class="article-tag-list-item">
