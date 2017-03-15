@@ -16,7 +16,7 @@
 <meta property="og:description" content="Concept:">
 <meta property="og:image" content="http://yoursite.com/home/th/test/blog/source/img/instruction_cycle.png">
 <meta property="og:image" content="http://yoursite.com/home/th/test/blog/source/img/endian.png">
-<meta property="og:updated_time" content="2017-03-15T08:08:19.112Z">
+<meta property="og:updated_time" content="2017-03-15T11:56:22.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="指令集">
 <meta name="twitter:description" content="Concept:">
@@ -264,8 +264,13 @@
 <ul>
 <li>所有指令定长（4个字节），通过补0实现使CPU能够快速解码</li>
 <li>指令只能从内存加载到寄存器或从寄存器存储到内存</li>
+<li>对于算术运算和逻辑运算，没有直接的方法在寄存器和内存之间直接进行（即算术运算指令和逻辑运算指令无法读取内存中的内容）</li>
+<li>RISC架构拥有大量的寄存器</li>
+<li>RISC只有少量的基本的指令</li>
+<li>99%的指令可以在一个时钟周期内执行完</li>
+<li>由于RISC指令集的精简，其指令用硬件的方法实现</li>
 </ul>
-
+<h2 id="Control-Unit-控制单元"><a href="#Control-Unit-控制单元" class="headerlink" title="Control Unit(控制单元)"></a>Control Unit(控制单元)</h2><h2 id="Micro-Operations"><a href="#Micro-Operations" class="headerlink" title="Micro-Operations"></a>Micro-Operations</h2>
       
 
       
@@ -498,10 +503,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">基本技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
@@ -514,11 +515,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
             
             <div class="clearfix"></div>
