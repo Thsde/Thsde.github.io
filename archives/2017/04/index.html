@@ -6,24 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>GDB调试 | Th&#39;s blog</title>
+  <title>Archives: 2017/4 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文中代码部分及部分讲解转载自陈皓gdb教程相关博客
-
-What is GDB?">
-<meta property="og:type" content="article">
-<meta property="og:title" content="GDB调试">
-<meta property="og:url" content="http://yoursite.com/2017/03/15/GDB调试/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Th's blog">
+<meta property="og:url" content="http://yoursite.com/archives/2017/04/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="文中代码部分及部分讲解转载自陈皓gdb教程相关博客
-
-What is GDB?">
-<meta property="og:updated_time" content="2017-03-26T06:12:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GDB调试">
-<meta name="twitter:description" content="文中代码部分及部分讲解转载自陈皓gdb教程相关博客
-
-What is GDB?">
+<meta name="twitter:title" content="Th's blog">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -149,196 +139,60 @@ What is GDB?">
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-GDB调试" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      GDB调试
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/04/01/hello-world/" class="archive-article-date">
+  	<time datetime="2017-04-01T14:36:51.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/04/01/hello-world/">Hello World</a>
     </h1>
   
 
-        
-        <a href="/2017/03/15/GDB调试/" class="archive-article-date">
-  	<time datetime="2017-03-15T05:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font color="red">文中代码部分及部分讲解转载自陈皓gdb教程相关博客</font>
-
-<h2 id="What-is-GDB"><a href="#What-is-GDB" class="headerlink" title="What is GDB?"></a>What is GDB?</h2><a id="more"></a>
-<blockquote>
-<p>GDB, the GNU Project debugger, allows you to see what is going on `inside’ another program while it executes – or what another program was doing at the moment it crashed.<br>GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act:<br>Start your program, specifying anything that might affect its behavior.<br>Make your program stop on specified conditions.<br>Examine what has happened, when your program has stopped.<br>Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.<br>The program being debugged can be written in Ada, C, C++, Objective-C, Pascal (and many other languages). Those programs might be executing on the same machine as GDB (native) or on another machine (remote). GDB can run on most popular UNIX and Microsoft Windows variants.</p>
-</blockquote>
-<p>简单来说，GDB就是一个DEBUG的工具</p>
-<hr>
-<h2 id="GDB-安装"><a href="#GDB-安装" class="headerlink" title="GDB 安装"></a>GDB 安装</h2><p>Linux系统下：<br>终端运行如下命令<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install gdb</div></pre></td></tr></table></figure></p>
-<p>Windows系统下：<br>下载MinGw或者TDM-GCC然后配置一下环境变量就可以在CMD中使用了。<br>安装完成后输入：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb -v</div></pre></td></tr></table></figure></p>
-<p>出现如下提示表示安装成功：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">GNU gdb (Debian 7.11.1-2) 7.11.1</div><div class="line">Copyright (C) 2016 Free Software Foundation, Inc.</div><div class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</div><div class="line">This is free software: you are free to change and redistribute it.</div><div class="line">There is NO WARRANTY, to the extent permitted by law.  Type "show copying"</div><div class="line">and "show warranty" for details.</div><div class="line">This GDB was configured as "x86_64-linux-gnu".</div><div class="line">Type "show configuration" for configuration details.</div><div class="line">For bug reporting instructions, please see:</div><div class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;.</div><div class="line">Find the GDB manual and other documentation resources online at:</div><div class="line">&lt;http://www.gnu.org/software/gdb/documentation/&gt;.</div><div class="line">For help, type "help".</div><div class="line">Type "apropos word" to search for commands related to "word".</div></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="编译说明"><a href="#编译说明" class="headerlink" title="编译说明"></a>编译说明</h2><p>要使用gdb调试程序，必须在进行编译时（g++或gcc）加入-g选项进行编译：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g++ test.cpp -g</div></pre></td></tr></table></figure></p>
-<h3 id="运行GDB"><a href="#运行GDB" class="headerlink" title="运行GDB"></a>运行GDB</h3><p>linux系统下编译链接默认生成a.out文件，所以在a.out文件所在目录下执行：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb a.out</div></pre></td></tr></table></figure></p>
-<p>windows系统下默认生成a.exe，同理在a.exe文件所在目录下执行：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gdb a.exe</div></pre></td></tr></table></figure></p>
-<hr>
-<h2 id="调试实例及部分简单调试命令"><a href="#调试实例及部分简单调试命令" class="headerlink" title="调试实例及部分简单调试命令"></a>调试实例及部分简单调试命令</h2><p>test.c:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> sum=<span class="number">0</span>,i;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++) &#123;</div><div class="line">        sum+=i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++) &#123;</div><div class="line">        result += i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="built_in">printf</span>(<span class="string">"result[1-100] = %d \n"</span>, result );</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"result[1-250] = %d \n"</span>, func(<span class="number">250</span>) );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">(gdb) b <span class="number">12</span>     <span class="comment">//设置断点，break的缩写，在源程序第12行处。</span></div><div class="line">Breakpoint <span class="number">1</span> at <span class="number">0x6e6</span>: file test.c, line <span class="number">12.</span></div><div class="line">(gdb) b func    <span class="comment">//设置断点，在函数func()入口处。</span></div><div class="line">Breakpoint <span class="number">2</span> at <span class="number">0x8048456</span>: file tst.c, line <span class="number">3.</span></div><div class="line">(gdb) info b   <span class="comment">//查看断点信息</span></div><div class="line">Num     Type           Disp Enb Address            What</div><div class="line"><span class="number">1</span>       breakpoint     keep y   <span class="number">0x00000000000006e6</span> in main at test.c:<span class="number">12</span></div><div class="line"><span class="number">2</span>       breakpoint     keep y   <span class="number">0x00000000000006b7</span> in func at test.c:<span class="number">4</span></div><div class="line">(gdb) r   <span class="comment">//运行程序，run的缩写</span></div><div class="line">Starting program:</div><div class="line"></div><div class="line">Breakpoint <span class="number">1</span>, main () at test.c:<span class="number">13</span></div><div class="line"><span class="number">13</span>	    <span class="keyword">long</span> result = <span class="number">0</span>;</div><div class="line">(gdb) n   <span class="comment">//next的缩写，执行下一步</span></div><div class="line"><span class="number">14</span>	    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++) &#123;</div><div class="line">(gdb) n</div><div class="line"><span class="number">15</span>	        result += i;</div><div class="line">(gdb) n</div><div class="line"><span class="number">14</span>	    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=<span class="number">100</span>; i++) &#123;</div><div class="line">(gdb) n</div><div class="line"><span class="number">15</span>	        result += i;</div><div class="line">(gdb) c   <span class="comment">//继续运行程序，continue命令简写。</span></div><div class="line">Continuing.</div><div class="line">result[<span class="number">1</span><span class="number">-100</span>] = <span class="number">5050</span>    <span class="comment">//程序输出。</span></div><div class="line"></div><div class="line">Breakpoint <span class="number">2</span>, func (n=<span class="number">250</span>) at tst.c:<span class="number">5</span></div><div class="line"><span class="number">4</span>                <span class="keyword">int</span> sum=<span class="number">0</span>,i;</div><div class="line">(gdb) n</div><div class="line"><span class="number">5</span>                <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">(gdb) p i    <span class="comment">//打印变量i的值，print命令简写。</span></div><div class="line">$<span class="number">1</span> = <span class="number">134513808</span></div><div class="line">(gdb) n</div><div class="line"><span class="number">6</span>                        sum+=i;</div><div class="line">(gdb) n</div><div class="line"><span class="number">5</span>                <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">(gdb) p sum</div><div class="line">$<span class="number">2</span> = <span class="number">1</span></div><div class="line">(gdb) n</div><div class="line"><span class="number">6</span>                        sum+=i;</div><div class="line">(gdb) p i</div><div class="line">$<span class="number">3</span> = <span class="number">2</span></div><div class="line">(gdb) n</div><div class="line"><span class="number">5</span>                <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=n; i++)</div><div class="line">(gdb) p sum</div><div class="line">$<span class="number">4</span> = <span class="number">3</span></div><div class="line">(gdb) bt    <span class="comment">//查看函数堆栈。</span></div><div class="line">#<span class="number">0</span>  func (n=<span class="number">250</span>) at tst.c:<span class="number">5</span></div><div class="line">#<span class="number">1</span>  <span class="number">0x080484e4</span> in main () at tst.c:<span class="number">24</span></div><div class="line">#<span class="number">2</span>  <span class="number">0x400409ed</span> in __libc_start_main () from /lib/libc.so<span class="number">.6</span></div><div class="line">(gdb) finish   <span class="comment">//退出函数。</span></div><div class="line">Run till <span class="built_in">exit</span> from #<span class="number">0</span>  func (n=<span class="number">250</span>) at tst.c:<span class="number">5</span></div><div class="line"><span class="number">0x080484e4</span> in main () at tst.c:<span class="number">24</span></div><div class="line"><span class="number">24</span>              <span class="built_in">printf</span>(<span class="string">"result[1-250] = %d /n"</span>, func(<span class="number">250</span>) );</div><div class="line">Value returned is $<span class="number">6</span> = <span class="number">31375</span></div><div class="line">(gdb) c    <span class="comment">//继续运行。</span></div><div class="line">Continuing.</div><div class="line">result[<span class="number">1</span><span class="number">-250</span>] = <span class="number">31375</span>    <span class="comment">//程序输出。</span></div><div class="line"></div><div class="line">Program exited with code <span class="number">027.</span> <span class="comment">//程序退出，调试结束。</span></div><div class="line">(gdb) q    <span class="comment">//退出gdb。</span></div></pre></td></tr></table></figure>
-<p><strong>step（简写为s）命令和next命令都是执行下一步，不同的是step命令会进入函数的内部，而next命令则是会直接执行完函数，然后在该函数的下一步等待</strong><br>如在上面代码的17行加上func(30)并进行gdb调试；<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Breakpoint <span class="number">1</span>, main () at test.c:<span class="number">17</span></div><div class="line"><span class="number">17</span>	    func(<span class="number">30</span>);</div><div class="line">(gdb) n</div><div class="line"><span class="number">18</span>	    <span class="built_in">printf</span>(<span class="string">"result[1-100] = %d \n"</span>, result );</div></pre></td></tr></table></figure></p>
-<p>使用next命令直接跳到18行等待<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Breakpoint 1, main () at test.c:17</div><div class="line">17	    func(30);</div><div class="line">(gdb) s</div><div class="line">func (n=30) at test.c:4</div><div class="line">4	    int sum=0,i;</div><div class="line">(gdb) s</div><div class="line">5	    for(i=1; i&lt;=n; i++) &#123;</div><div class="line">(gdb) s</div><div class="line">6	        sum+=i;</div><div class="line">(gdb) s</div></pre></td></tr></table></figure></p>
-<p>可以看到，使用s进入到了func函数的内部</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">调试技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/15/GDB调试/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/15/thread/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          thread
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/03/13/instruction/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">指令集</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-  <div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="GDB调试" data-title="GDB调试" data-url="http://yoursite.com/2017/03/15/GDB调试/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"true"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -361,8 +215,8 @@ What is GDB?">
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

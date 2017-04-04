@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/img/cpu_time_histogram.png">
 <meta property="og:image" content="http://yoursite.com/img/multilevel_queue.png">
 <meta property="og:image" content="http://yoursite.com/img/multilevel_feedback.png">
-<meta property="og:updated_time" content="2017-03-22T15:44:34.483Z">
+<meta property="og:updated_time" content="2017-03-26T06:12:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CPU Scheduling">
 <meta name="twitter:description" content="CPU SchedulingBasic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
@@ -193,8 +193,8 @@
 <h3 id="Scheduling-Criteria-调度准则"><a href="#Scheduling-Criteria-调度准则" class="headerlink" title="Scheduling Criteria(调度准则)"></a>Scheduling Criteria(调度准则)</h3><ul>
 <li>CPU utilization - keep the CPU as busy as possible</li>
 <li>Throughput(吞吐量) - of processes that complete their execution per time unit.</li>
-<li>Turnaround time(轮转时间) - 从进程提交到进程完成的时间</li>
-<li>Waiting time - amount of time a process has been waiting in the queue.</li>
+<li>Turnaround time(轮转时间) - Turnaround time is the sum of the periods spent waiting to get into memory, waiting in the ready queue, executing on the CPU, and doing I/O.</li>
+<li>Waiting time - amount of time a process has been waiting <strong>in the queue</strong>.</li>
 <li>Response time - amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment).</li>
 </ul>
 <hr>
@@ -323,6 +323,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/04/01/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/03/17/2017年03月17日00-17-41/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">2017年03月17日00:17:41</div>
@@ -439,6 +448,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -447,15 +460,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,7 +472,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
