@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>随笔_ | Th&#39;s blog</title>
+  <title>类的this指针 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抱歉，这个只是给自己看的">
+  <meta name="description" content="定义成员函数通过一个名为this的额外的隐式参数来访问调用它的那个对象。当我们调用一个成员函数时，用请求该函数的对象地址初始化this。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随笔_">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/2017年03月11日22-31-58/index.html">
+<meta property="og:title" content="类的this指针">
+<meta property="og:url" content="http://yoursite.com/2017/04/01/类的this指针/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="抱歉，这个只是给自己看的">
-<meta property="og:updated_time" content="2017-03-26T06:12:44.000Z">
+<meta property="og:description" content="定义成员函数通过一个名为this的额外的隐式参数来访问调用它的那个对象。当我们调用一个成员函数时，用请求该函数的对象地址初始化this。">
+<meta property="og:updated_time" content="2017-04-04T09:17:05.660Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随笔_">
-<meta name="twitter:description" content="抱歉，这个只是给自己看的">
+<meta name="twitter:title" content="类的this指针">
+<meta name="twitter:description" content="定义成员函数通过一个名为this的额外的隐式参数来访问调用它的那个对象。当我们调用一个成员函数时，用请求该函数的对象地址初始化this。">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -143,29 +143,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2017年03月11日22-31-58" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-类的this指针" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      随笔_
+      类的this指针
     </h1>
   
 
         
-        <a href="/2017/03/11/2017年03月11日22-31-58/" class="archive-article-date">
-  	<time datetime="2017-03-11T14:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-11</time>
+        <a href="/2017/04/01/类的this指针/" class="archive-article-date">
+  	<time datetime="2017-04-01T14:36:51.264Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <script src="/crypto-js.js"></script><script src="/mcommon.js"></script><h3 id="encrypt-message">Welcome to my blog, enter password to read.</h3><link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"> <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> <div id="security"> <div> <div class="input-group"> <input type="text" class="form-control" aria-label="Enter the password." id="pass"/> <div class="input-group-btn"> <button type="button" class="btn btn-default" onclick="decryptAES()">Decrypt</button> </div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> U2FsdGVkX1+RvTFoYj8VS1W3ik/WAWTyXfpru8VO5Sw9l0gy8n6mKlFBexskdbk0W2r/tEUCljiMbR2qMhLj++vT83jsKvVH8VEO+OYViZbWD3VM/GEt7J0x4HjSfBQ57c96uTJ8pLig/cHgq3UCDEKnNSltl39fMYDx+RYLAm6I8D67XjTTr95kfzodYDMM6WWC+OXAeiPGnKC0V0S8zO/Sev7TEKy05/WHYwd+EQdx2bC/5NybpyLlqdSewOl4XzHxGojwUIACxj0ufc0AW492am7cNpR8xCoJpfzywL9buQ5zyGSCzupfRNL4lxsYQj8jrp/v0+c1weRNTaw0JNBfGQYaxZmS9iTUXP1f7ZD6A24L9sOrTp3F7Xi5KD1WqcCkX/xFW4y3Mv5fNwYE1Qp6MS9znDV175jYEIWu1NU15mLkHcpf1Kw1VdhfIYWyrw0BrqSG9hDmDNYfOx05Z8s5imew0oXaYW8CUtOSMViHj2DVEB78KP1MT4DWafkV6cQexmZoKFVKS7KQEtuJDTpovslRxe5QZR8rMFbctcDz/Q84YGJYA0rCKzCg37fYdMccJvbjGy22Sxhg2zitaEt+Ck97Cqix/WLp2KcipeKJEiJpdBwuk3wtYDG6irVjGVPnGn2ygl56W8r/vtVe5a1YNDVIwbdd+6FVo1uBExCFiR8tC2Dcdtl3I6kafj6jDXAFFzFLTrKO4n11tiXD4KvLMIFrKlBAD55AUC3Z4+KNFWrLW24On540btmB2WstZI96aKSnj0KIpaso0VkbMYQ0atmAZkvf00L32BhzqPCWxburYeDijL3XADk2mcHls/Qb4phpDnPXfh7yZg1tAwj6ivS457Rs6LeVRzY3MhonqHTd1pxQ5Y7fPc+IG3YCUzz7EaVSprQMFmxmBUZd3UmGM+KUxvaxfpMk2UJ2G5d3+6rtkWs8SZuZqGMYRk9q7VRtN0MYuteDcnrbY7FSznXCCevv4CDlU+NWwDT/4cSE0rmpmh0ZtwAQT/q+fREo5RetWgxyCKCVq73aIOdz0DA05sclsj+MzWs+KOimg0ErW/f9IF02Ru/a/9knjW8uIr7TNBamXHMUC3ZayiCWVFj37Q8GQLkkjrOTTTryuWcXGwpDg5libConPEW7o/ZpgnLEnxNzpZjimQh/Qa6ZdORLjj9Aok1++YLGgxUVRpWi2LYzyBHtKAFeqEMYwsY2Axi0lb2LjlkI0DQreUXIVl/AOxXG9hnnAAO6LjsQBcpcwyDVMQdsktuzYTOf2VLDuQJR0FqcMg6sER7vENETGPSxQZaWjOZ6Vow1N9yztrffKH/BM5OptU7DGFipmXld3W6Hf4mcIQqQlTJG+lCXymvIrLedBPDthj9bja0PqjraDkKt0Qrcj0Q+WWlNS4cCwXdkU+D1GJ9oxfBT86J5YYtiivDHK3nYhN3iIFTap0AEAcxu5UbO0rLP70f9JqYK/KVVtpCAqvfLV8ddh5vek5FO94kNSSRfULSVIaA9K8EShZeEE06cbu6v6kFzSgCTR04kg+Ku39qMC9LPErcriZ0M6mKqe6UM+LfiaptHQ29+KSf5SzFKeeFaCn3szgnp81oaNkLEP0a9ob7jBpZyexo8ZCtWF4V0TlelcdjoSBw9/LaeCHgacm9RvfOR1s0+/9wauiRasnHuo9/EB2O+wjpuOTisNhhCpsJgxJqc6OoNSdhXcs7DGFz94aFGZu4dfn2T16Qws2ltY7Ao+iLEAsIdZrmRAN6cekcGac1l+eUw4wDosiACw7VTOlz7383pJE/Vd88PsVliwo9p0isAHJUZulL0VkaAMS2o8+Z8MjMZdexxEPZvub02vQpeQ3OPv7U6TEfJMqJXmXECROLm+PKDkBFBV5u+1rbscBp1xFZfjJlANBkUbsyVhkwXB10s </div>
+        <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>成员函数通过一个名为this的额外的隐式参数来访问调用它的那个对象。当我们调用一个成员函数时，用请求该函数的对象地址初始化this。<br><a id="more"></a><br>在成员函数内部，我们可以直接使用调用该函数的对象的成员，而无须通过成员访问运算符来做到这一点，因为this所指的正是这个对象。任何对类成员的直接访问都被看作this的隐式引用。<br>this形参是隐式定义的。任何自定义名为this的参数或变量的行为都是非法的。<br>因为this总是指向“这个”对象，因此this是一个常量指针，且是一个指向非常量类类型的常量指针</p>
+<h3 id="类的const成员函数与this指针"><a href="#类的const成员函数与this指针" class="headerlink" title="类的const成员函数与this指针"></a>类的const成员函数与this指针</h3><p>类的const成员函数是在紧随参数列表之后加上const关键字，这里，const的作用是修改隐式this指针的类型。<br>默认情况下this是一个常量指针，且是一个指向非常量类类型的常量指针，因此，this指针不能被绑定到一个常量对象上。也就使我们不能在一个常量对象上调用普通的成员函数。<br>一旦将成员函数声明为常量成员函数，那么this是指向常量的常量指针，所以常量成员函数不能改变调用它的对象的内容。</p>
+<h3 id="赋值运算符重载返回-this"><a href="#赋值运算符重载返回-this" class="headerlink" title="赋值运算符重载返回*this"></a>赋值运算符重载返回*this</h3><p>一般来说，当我们定义的函数类似于某个内置运算符时，应该令该函数的行为尽量模仿这个运算符。内置的赋值运算符把它的左侧运算对象当成左值返回，因此为了保持一致，这些定义的函数也必须返回引用类型。</p>
+<h3 id="从const成员函数返回-this"><a href="#从const成员函数返回-this" class="headerlink" title="从const成员函数返回*this"></a>从const成员函数返回*this</h3><p>一个常量成员函数的this指针是一个指向const的指针而*this是const对象。因此，常量成员函数的返回类型应该是const&amp;。即使引用返回的是左值，但是由于const的作用也无法改变返回值的值。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -176,7 +201,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -232,7 +257,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/11/2017年03月11日22-31-58/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/01/类的this指针/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -246,18 +271,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/12/进程/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/04/Process Synchronization(进程同步)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          进程
+          Process Synchronization(进程同步)
         
       </div>
     </a>
   
   
-    <a href="/2017/03/11/function/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C++ Function</div>
+    <a href="/2017/04/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -271,7 +296,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2017年03月11日22-31-58" data-title="随笔_" data-url="http://yoursite.com/2017/03/11/2017年03月11日22-31-58/"></div>
+	<div class="ds-thread" data-thread-key="类的this指针" data-title="类的this指针" data-url="http://yoursite.com/2017/04/01/类的this指针/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
