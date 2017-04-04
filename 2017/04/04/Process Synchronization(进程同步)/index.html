@@ -6,16 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>进程同步 | Th&#39;s blog</title>
+  <title>Process Synchronization(进程同步) | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Process Synchronization(进程同步)Background
+  <meta name="description" content="Background
 对共享数据的并发请求会导致数据的不一致
 维持数据的一致需要一个能确保共享同一逻辑地址的协作进程可以有序地执行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="进程同步">
+<meta property="og:title" content="Process Synchronization(进程同步)">
 <meta property="og:url" content="http://yoursite.com/2017/04/04/Process Synchronization(进程同步)/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="Process Synchronization(进程同步)Background
+<meta property="og:description" content="Background
 对共享数据的并发请求会导致数据的不一致
 维持数据的一致需要一个能确保共享同一逻辑地址的协作进程可以有序地执行">
 <meta property="og:image" content="http://yoursite.com/img/structure.jpg">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="http://yoursite.com/img/testandset_instruction.jpg">
 <meta property="og:image" content="http://yoursite.com/img/bounded-buffer-problem.jpg">
 <meta property="og:image" content="http://yoursite.com/img/reader-writer-problem.jpg">
-<meta property="og:updated_time" content="2017-04-04T02:16:07.830Z">
+<meta property="og:updated_time" content="2017-04-04T02:19:21.299Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="进程同步">
-<meta name="twitter:description" content="Process Synchronization(进程同步)Background
+<meta name="twitter:title" content="Process Synchronization(进程同步)">
+<meta name="twitter:description" content="Background
 对共享数据的并发请求会导致数据的不一致
 维持数据的一致需要一个能确保共享同一逻辑地址的协作进程可以有序地执行">
 <meta name="twitter:image" content="http://yoursite.com/img/structure.jpg">
@@ -163,7 +163,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      进程同步
+      Process Synchronization(进程同步)
     </h1>
   
 
@@ -176,7 +176,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Process-Synchronization-进程同步"><a href="#Process-Synchronization-进程同步" class="headerlink" title="Process Synchronization(进程同步)"></a>Process Synchronization(进程同步)</h1><h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><ul>
+        <h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><ul>
 <li>对共享数据的并发请求会导致数据的不一致</li>
 <li>维持数据的一致需要一个能确保共享同一逻辑地址的协作进程可以有序地执行</li>
 </ul>
@@ -184,7 +184,7 @@
 <a id="more"></a>
 <h3 id="The-Critical-Section-Problem-临界区问题"><a href="#The-Critical-Section-Problem-临界区问题" class="headerlink" title="The Critical-Section Problem(临界区问题)"></a>The Critical-Section Problem(临界区问题)</h3><h4 id="何为临界区"><a href="#何为临界区" class="headerlink" title="何为临界区"></a>何为临界区</h4><p>每个进程有一个代码段称为临界区，在该区中进程可能改变共同变量、更新一个表、写一个文件等。这种系统的重要特征是当一个进程进入临界区，没有其他进程可被允许在临界区内执行，即没有两个进程可同时在临界区内执行。</p>
 <h4 id="何为临界区问题"><a href="#何为临界区问题" class="headerlink" title="何为临界区问题"></a>何为临界区问题</h4><p>临界区问题是设计一个以便进程协作的协议。每个进程必须请求允许进入临界区，实现这一请求的代码段称为进入去(entry section)，临界区之后可有退出区(exit section)，其他代码为剩余区(remainder section)。</p>
-<p><img src="img/structure.jpg" alt="通用结构"></p>
+<p><img src="/img/structure.jpg" alt="通用结构"></p>
 <h4 id="如何解决临界区问题"><a href="#如何解决临界区问题" class="headerlink" title="如何解决临界区问题"></a>如何解决临界区问题</h4><ul>
 <li>强制实施互斥：在具有关于相同资源或共享对象的临界区的所有过程中，一次只允许一个进程进入临界区；</li>
 <li>一个在非临界区的进程必须不干涉其他进程；</li>
@@ -380,7 +380,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Process Synchronization(进程同步)" data-title="进程同步" data-url="http://yoursite.com/2017/04/04/Process Synchronization(进程同步)/"></div>
+	<div class="ds-thread" data-thread-key="Process Synchronization(进程同步)" data-title="Process Synchronization(进程同步)" data-url="http://yoursite.com/2017/04/04/Process Synchronization(进程同步)/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

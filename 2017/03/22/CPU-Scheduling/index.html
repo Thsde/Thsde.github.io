@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CPU Scheduling | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CPU SchedulingBasic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
+  <meta name="description" content="Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CPU Scheduling">
 <meta property="og:url" content="http://yoursite.com/2017/03/22/CPU-Scheduling/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="CPU SchedulingBasic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
+<meta property="og:description" content="Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
 <meta property="og:image" content="http://yoursite.com/img/cpu.png">
 <meta property="og:image" content="http://yoursite.com/img/cpu_time_histogram.png">
 <meta property="og:image" content="http://yoursite.com/img/multilevel_queue.png">
 <meta property="og:image" content="http://yoursite.com/img/multilevel_feedback.png">
-<meta property="og:updated_time" content="2017-03-26T06:12:42.000Z">
+<meta property="og:updated_time" content="2017-04-04T02:19:47.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CPU Scheduling">
-<meta name="twitter:description" content="CPU SchedulingBasic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
+<meta name="twitter:description" content="Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
 <meta name="twitter:image" content="http://yoursite.com/img/cpu.png">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
@@ -168,7 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="CPU-Scheduling"><a href="#CPU-Scheduling" class="headerlink" title="CPU Scheduling"></a>CPU Scheduling</h2><h3 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h3><h5 id="Maximum-CPU-utilization-obtained-with-multiprogramming"><a href="#Maximum-CPU-utilization-obtained-with-multiprogramming" class="headerlink" title="Maximum CPU utilization obtained with multiprogramming:"></a>Maximum CPU utilization obtained with multiprogramming:</h5><p>对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。<br><a id="more"></a></p>
+        <h3 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h3><h5 id="Maximum-CPU-utilization-obtained-with-multiprogramming"><a href="#Maximum-CPU-utilization-obtained-with-multiprogramming" class="headerlink" title="Maximum CPU utilization obtained with multiprogramming:"></a>Maximum CPU utilization obtained with multiprogramming:</h5><p>对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。<br><a id="more"></a></p>
 <h5 id="CPU-I-O区间周期："><a href="#CPU-I-O区间周期：" class="headerlink" title="CPU-I/O区间周期："></a>CPU-I/O区间周期：</h5><p>进程执行由CPU执行和I/O等待周期组成。进程在这两个状态之间切换。进程执行从CPU区间（CPU burst)开始，在这之后是I/O区间（I/O burst），接着是另一个CPU区间，然后是另一个I/O区间，如此进行下去。最终，最后的CPU区间通过系统请求终止执行。<br><img src="/img/cpu.png" alt="cpu.png"></p>
 <h5 id="CPU区间时间曲线："><a href="#CPU区间时间曲线：" class="headerlink" title="CPU区间时间曲线："></a>CPU区间时间曲线：</h5><p><img src="/img/cpu_time_histogram.png" alt="cpu_time_histogram.png"></p>
 <hr>
