@@ -9,21 +9,18 @@
   <title>拷贝 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="拷贝构造函数定义如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。
-如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数
-合成拷贝构造函数合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝">
+如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拷贝">
 <meta property="og:url" content="http://yoursite.com/2017/04/06/拷贝/index.html">
 <meta property="og:site_name" content="Th's blog">
 <meta property="og:description" content="拷贝构造函数定义如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。
-如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数
-合成拷贝构造函数合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝">
-<meta property="og:updated_time" content="2017-04-06T15:41:55.257Z">
+如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数">
+<meta property="og:updated_time" content="2017-04-06T15:49:26.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拷贝">
 <meta name="twitter:description" content="拷贝构造函数定义如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。
-如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数
-合成拷贝构造函数合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝">
+如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -171,6 +168,7 @@
       
         <h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>如果一个构造函数的第一个参数是自身类类型的<strong>引用</strong>，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。</p>
 <p>如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数</p>
+<a id="more"></a>
 <h4 id="合成拷贝构造函数"><a href="#合成拷贝构造函数" class="headerlink" title="合成拷贝构造函数"></a>合成拷贝构造函数</h4><p>合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝到正在创建的对象中。</p>
 <p>成员的类型决定了如何拷贝：对于类类型的成员，会使用拷贝构造函数来拷贝；内置类型的成员则直接拷贝；数组类型则会逐元素地拷贝。</p>
 <h4 id="拷贝初始化-拷贝构造函数使用的时候-："><a href="#拷贝初始化-拷贝构造函数使用的时候-：" class="headerlink" title="拷贝初始化(拷贝构造函数使用的时候)："></a>拷贝<strong>初始化</strong>(拷贝构造函数使用的时候)：</h4><ul>
@@ -412,15 +410,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随写</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
+                <a href="javascript:void(0)" class="js-tag color3">随写</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -432,11 +426,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
