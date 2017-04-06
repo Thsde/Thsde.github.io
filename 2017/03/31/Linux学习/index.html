@@ -6,24 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>thread | Th&#39;s blog</title>
+  <title>Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Concept:线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。">
+  <meta name="description" content="开机流程与主引导分区(MBR)BIOS是在开机的时候计算机系统会主动执行的第一个程序
+
+BIOS：一个写入到主板上的一个韧体(韧体就是写入到硬件上的一个软件程序)
+CMOS：记录各项硬件参数且嵌入在主板上的存储器
+
+开机流程如下：
+主动执行BIOS，识别第一个可开机的设备(如光盘、硬盘、U盘等) —&amp;gt; MBR，第一个可开机设备的第一个扇区内的 主引导分区块，内包含引导加载程序 —&amp;gt; 引">
 <meta property="og:type" content="article">
-<meta property="og:title" content="thread">
-<meta property="og:url" content="http://yoursite.com/2017/03/15/thread/index.html">
+<meta property="og:title" content="Th's blog">
+<meta property="og:url" content="http://yoursite.com/2017/03/31/Linux学习/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="Concept:线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。">
-<meta property="og:image" content="http://yoursite.com/img/thread.png">
-<meta property="og:image" content="http://yoursite.com/img/Many_to_one.png">
-<meta property="og:image" content="http://yoursite.com/img/one_to_one.png">
-<meta property="og:image" content="http://yoursite.com/img/one_to_one.png">
-<meta property="og:image" content="http://yoursite.com/img/two_level.png">
-<meta property="og:updated_time" content="2017-04-04T02:20:21.098Z">
+<meta property="og:description" content="开机流程与主引导分区(MBR)BIOS是在开机的时候计算机系统会主动执行的第一个程序
+
+BIOS：一个写入到主板上的一个韧体(韧体就是写入到硬件上的一个软件程序)
+CMOS：记录各项硬件参数且嵌入在主板上的存储器
+
+开机流程如下：
+主动执行BIOS，识别第一个可开机的设备(如光盘、硬盘、U盘等) —&amp;gt; MBR，第一个可开机设备的第一个扇区内的 主引导分区块，内包含引导加载程序 —&amp;gt; 引">
+<meta property="og:updated_time" content="2017-04-01T01:23:01.771Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="thread">
-<meta name="twitter:description" content="Concept:线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。">
-<meta name="twitter:image" content="http://yoursite.com/img/thread.png">
+<meta name="twitter:title" content="Th's blog">
+<meta name="twitter:description" content="开机流程与主引导分区(MBR)BIOS是在开机的时候计算机系统会主动执行的第一个程序
+
+BIOS：一个写入到主板上的一个韧体(韧体就是写入到硬件上的一个软件程序)
+CMOS：记录各项硬件参数且嵌入在主板上的存储器
+
+开机流程如下：
+主动执行BIOS，识别第一个可开机的设备(如光盘、硬盘、U盘等) —&amp;gt; MBR，第一个可开机设备的第一个扇区内的 主引导分区块，内包含引导加载程序 —&amp;gt; 引">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -149,91 +161,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-thread" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Linux学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      thread
-    </h1>
-  
-
-        
-        <a href="/2017/03/15/thread/" class="archive-article-date">
-  	<time datetime="2017-03-15T15:09:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3><p>线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。<br><a id="more"></a><br><img src="/img/thread.png" alt="thread.png"><br>线程共享代码段、数据段、和其他操作系统资源</p>
+        <h2 id="开机流程与主引导分区-MBR"><a href="#开机流程与主引导分区-MBR" class="headerlink" title="开机流程与主引导分区(MBR)"></a>开机流程与主引导分区(MBR)</h2><p>BIOS是在开机的时候计算机系统会主动执行的第一个程序</p>
 <ul>
-<li>Process: Ownership of memory, files, other resources</li>
-<li>Thread: Unit of execution we use to dispatch</li>
+<li>BIOS：一个写入到主板上的一个韧体(韧体就是写入到硬件上的一个软件程序)</li>
+<li>CMOS：记录各项硬件参数且嵌入在主板上的存储器</li>
 </ul>
-<h3 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits:"></a>Benefits:</h3><ul>
-<li>Resonsiveness(响应度高)</li>
-<li>Resource Sharing(资源共享)</li>
-<li>Economy(经济)</li>
-<li>Utilization of MP Architectures(多处理器体系结构的利用)</li>
-</ul>
-<h3 id="Multithreading-Models-多线程模型"><a href="#Multithreading-Models-多线程模型" class="headerlink" title="Multithreading Models(多线程模型)"></a>Multithreading Models(多线程模型)</h3><h4 id="User-and-Kernel-Threads"><a href="#User-and-Kernel-Threads" class="headerlink" title="User and Kernel Threads"></a>User and Kernel Threads</h4><ul>
-<li>User Threads: Thread management done by user-level threads library</li>
-<li>Kernel threads: Threads directly supported by the kernel</li>
-</ul>
-<h4 id="Many-to-One-多对一模型"><a href="#Many-to-One-多对一模型" class="headerlink" title="Many-to-One(多对一模型)"></a>Many-to-One(多对一模型)</h4><p>多对一模型将许多用户级线程映射到一个内核线程，线程管理是由线程库在用户空间进行的，因此效率比较高。但是如果一个线程执行阻塞了系统调用，那么整个进程会阻塞。而且，任何时候只有一个线程能够访问内核，多个线程不能并行运行在多处理器上。<br><img src="/img/Many_to_one.png" alt="Many_to_one.png"></p>
-<h4 id="One-to-One-一对一模型"><a href="#One-to-One-一对一模型" class="headerlink" title="One-to-One(一对一模型)"></a>One-to-One(一对一模型)</h4><p>一对一模型将每个用户线程映射到一个内核线程。当一个线程执行阻塞系统调用时，能允许另一个线程继续执行，也能够并行运行在多处理器系统上。但是每创建一个用户线程就需要创建一个相应的内盒线程，开销大，也就限制了线程数量。<br><img src="/img/one_to_one.png" alt="one_to_one.png"></p>
-<h4 id="Many-to-Many-多对多模型"><a href="#Many-to-Many-多对多模型" class="headerlink" title="Many-to-Many(多对多模型)"></a>Many-to-Many(多对多模型)</h4><p>多对多模型允许将多个用户线程映射到多个内核线程，同时能够创建足够多的内核线程。<br><img src="/img/one_to_one.png" alt="one_to_one.png"></p>
-<h4 id="Two-level-Model-二级模型"><a href="#Two-level-Model-二级模型" class="headerlink" title="Two-level Model(二级模型)"></a>Two-level Model(二级模型)</h4><p><img src="/img/two_level.png" alt="two_level.png"></p>
-<h3 id="Thread-Pools-线程池"><a href="#Thread-Pools-线程池" class="headerlink" title="Thread Pools(线程池)"></a>Thread Pools(线程池)</h3><p>线程池的主要思想是在进程开始时创建一定数量的线程，并放到池中等待工作。当服务器收到请求时，它会唤醒池中的一个线程(如果有可用的线程)，并将要处理的请求传递给它。一旦线程完成了服务，它会返回到池中等待工作。如果池中没有可用的线程，那么服务器会已知等待直到有空线程为止。<br>线程池具有如下有点：</p>
+<p>开机流程如下：</p>
+<p>主动执行BIOS，识别第一个可开机的设备(如光盘、硬盘、U盘等) —&gt; MBR，第一个可开机设备的第一个扇区内的 主引导分区块，内包含引导加载程序 —&gt; 引导加载程序(Boot loader)，一支可读取内核文件来执行的软件。—&gt; 内核文件，开始操作系统的功能</p>
+<p>Boot loader是操作系统安装在MBR上的一套软件，主要包括</p>
 <ul>
-<li>通常用现有线程处理请求要比等待创建新的线程要快</li>
-<li>线程池限制了在任何时候可用线程的数量。这对那些不能支持大量并发线程的系统非常重要</li>
+<li>提供菜单：用户可以选择不同的开机选项，是多重引导的重要功能</li>
+<li>载入内核文件：直接指向可开机的程序区段来开始操作系统</li>
+<li>转交其他loader：将引导加载功能转交给其他loader负责(因为引导加载程序除了可以安装在MBR之外，还可以安装在每个分区的引导扇区(boot sector))</li>
 </ul>
-<h3 id="Thread-Specific-Data-线程特定数据"><a href="#Thread-Specific-Data-线程特定数据" class="headerlink" title="Thread Specific Data(线程特定数据)"></a>Thread Specific Data(线程特定数据)</h3><p>一个进程的线程共享进程数据，但是，某些情况下每个线程可能需要拥有自己一些数据的副本，这种数据称为线程特定数据，在我们区别一个进程中的某个线程时尤其有效</p>
+<p>多重引导的工作：</p>
+<ul>
+<li>每个分区都拥有自己的启动扇区</li>
+<li>实际可开机的内核文件是放置到各分区内的</li>
+<li>loader只会识别自己的系统分区内的可开机内核文件，以及其他的loader而已</li>
+<li>loader可直接指向或者是间接将管理权转交给另一个管理程序</li>
+</ul>
+<h2 id="Linux安装模式下，磁盘分区的选择"><a href="#Linux安装模式下，磁盘分区的选择" class="headerlink" title="Linux安装模式下，磁盘分区的选择"></a>Linux安装模式下，磁盘分区的选择</h2><h3 id="目录树结构"><a href="#目录树结构" class="headerlink" title="目录树结构"></a>目录树结构</h3><p>所谓目录树结构就是以根目录为主，然后向下呈现分支状的目录结构的一种文件结构。</p>
+<h3 id="文件系统与目录树的关系-挂载"><a href="#文件系统与目录树的关系-挂载" class="headerlink" title="文件系统与目录树的关系(挂载)"></a>文件系统与目录树的关系(挂载)</h3><p>所谓的挂载就是利用一个目录当成进入点，将磁盘分区的数据放置在该目录下；也就是说，进入该目录就可以读取该分区的意思。这个操作称为挂载，进入点的目录称为“挂载点”。由于整个Linux系统最重要的就是根目录，因此根目录一定需要挂载到某个分区。至于其他的目录则可依用户自己的需求来给予挂载到不同的分区。</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -284,7 +246,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/15/thread/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/31/Linux学习/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +260,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/17/2017年03月17日00-17-41/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/01/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          2017年03月17日00:17:41
+          Hello World
         
       </div>
     </a>
   
   
-    <a href="/2017/03/15/GDB调试/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GDB调试</div>
+    <a href="/2017/03/22/CPU-Scheduling/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CPU Scheduling</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -323,7 +285,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="thread" data-title="thread" data-url="http://yoursite.com/2017/03/15/thread/"></div>
+	<div class="ds-thread" data-thread-key="Linux学习" data-title="" data-url="http://yoursite.com/2017/03/31/Linux学习/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>thread | Th&#39;s blog</title>
+  <title>拷贝 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Concept:线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。">
+  <meta name="description" content="拷贝构造函数定义如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。
+如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数
+合成拷贝构造函数合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝">
 <meta property="og:type" content="article">
-<meta property="og:title" content="thread">
-<meta property="og:url" content="http://yoursite.com/2017/03/15/thread/index.html">
+<meta property="og:title" content="拷贝">
+<meta property="og:url" content="http://yoursite.com/2017/04/06/拷贝/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="Concept:线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。">
-<meta property="og:image" content="http://yoursite.com/img/thread.png">
-<meta property="og:image" content="http://yoursite.com/img/Many_to_one.png">
-<meta property="og:image" content="http://yoursite.com/img/one_to_one.png">
-<meta property="og:image" content="http://yoursite.com/img/one_to_one.png">
-<meta property="og:image" content="http://yoursite.com/img/two_level.png">
-<meta property="og:updated_time" content="2017-04-04T02:20:21.098Z">
+<meta property="og:description" content="拷贝构造函数定义如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。
+如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数
+合成拷贝构造函数合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝">
+<meta property="og:updated_time" content="2017-04-06T14:58:41.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="thread">
-<meta name="twitter:description" content="Concept:线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。">
-<meta name="twitter:image" content="http://yoursite.com/img/thread.png">
+<meta name="twitter:title" content="拷贝">
+<meta name="twitter:description" content="拷贝构造函数定义如果一个构造函数的第一个参数是自身类类型的引用，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。
+如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数
+合成拷贝构造函数合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -149,75 +149,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-thread" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-拷贝" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      thread
+      拷贝
     </h1>
   
 
         
-        <a href="/2017/03/15/thread/" class="archive-article-date">
-  	<time datetime="2017-03-15T15:09:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
+        <a href="/2017/04/06/拷贝/" class="archive-article-date">
+  	<time datetime="2017-04-06T12:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3><p>线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。<br><a id="more"></a><br><img src="/img/thread.png" alt="thread.png"><br>线程共享代码段、数据段、和其他操作系统资源</p>
+        <h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>如果一个构造函数的第一个参数是自身类类型的<strong>引用</strong>，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。</p>
+<p>如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数</p>
+<h4 id="合成拷贝构造函数"><a href="#合成拷贝构造函数" class="headerlink" title="合成拷贝构造函数"></a>合成拷贝构造函数</h4><p>合成的拷贝构造函数会将其参数的成员逐个拷贝到正在创建的对象中。编译器从给定对象中依次将每个非static成员拷贝到正在创建的对象中。</p>
+<p>成员的类型决定了如何拷贝：对于类类型的成员，会使用拷贝构造函数来拷贝；内置类型的成员则直接拷贝；数组类型则会逐元素地拷贝。</p>
+<h4 id="拷贝初始化-拷贝构造函数使用的时候-："><a href="#拷贝初始化-拷贝构造函数使用的时候-：" class="headerlink" title="拷贝初始化(拷贝构造函数使用的时候)："></a>拷贝<strong>初始化</strong>(拷贝构造函数使用的时候)：</h4><ul>
+<li>用 = 号定义变量</li>
+<li>将一个对象作为实参传递给一个非引用类型的形参</li>
+<li>从一个返回类型为非引用的函数返回一个对象</li>
+<li>用花括号列表初始化一个数组中的元素或一个聚合类中的成员</li>
+</ul>
+<p><strong>拷贝构造函数被用来初始化非引用类类型参数，如果拷贝构造函数的参数不是引用类型，则调用永远也不会成功——为了调用拷贝构造函数，我们必须拷贝它的实参，但为了拷贝实参，我们又需要调用拷贝构造函数，如此无限循环</strong></p>
+<h3 id="拷贝赋值运算符"><a href="#拷贝赋值运算符" class="headerlink" title="拷贝赋值运算符"></a>拷贝赋值运算符</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>赋值运算符是一个名为operator= 的函数。类似于其他函数，运算符函数也有一个返回类型和一个参数列表。重载赋值运算符，必须定义为成员函数，如此才可以将this参数隐式地绑定到左侧运算对象上，而右侧运算对象作为显式参数传递。拷贝赋值运算符接受一个与其所在类相同类型的参数。且为了与内置类型的赋值保持一致，赋值运算符通常返回一个指向其左侧运算对象的引用。如果类没有定义赋值运算符重载函数，那么编译器会为其合成一个。</p>
+<h4 id="合成赋值运算符"><a href="#合成赋值运算符" class="headerlink" title="合成赋值运算符"></a>合成赋值运算符</h4><p>与拷贝构造函数类似，会将右侧运算对象的每个非static成员赋予左侧运算对象的对应成员，通过成员类型的<strong>拷贝赋值运算符</strong>来完成的。同样，对于数组，逐个赋值数组元素。</p>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><h4 id="定义及作用"><a href="#定义及作用" class="headerlink" title="定义及作用"></a>定义及作用</h4><p>析构函数执行与构造函数相反的操作：构造函数初始化对象的非static数据成员；析构函数释放对象使用的资源，并销毁对象的非static数据成员。</p>
+<p>析构函数是类的一个成员函数，名字由波浪号接类名构成，没有返回值，也不接受参数，因此，不能被重载，一个给定的类只有一个析构函数。</p>
+<p>在一个析构函数中，<strong>首先执行函数体，然后销毁成员</strong>，析构函数函数体并不销毁成员，成员是在析构函数体之后隐含的析构阶段中被销毁的。成员按照初始化顺序的逆序销毁。</p>
+<p>通常，析构函数释放对象在生存期分配的所有资源。成员销毁时发生什么完全以来于成员的类型。类类型的成员需要执行成员自己的析构函数，内置类型则不需要进行任何操作。</p>
+<font color="red">隐式销毁一个内置指针类型的成员不会delete它所指向的对象，智能指针属于类类型，所以具有析构函数，在在析构阶段会被自动销毁，同时释放指向的内容</font>
+
+<h4 id="调用时间"><a href="#调用时间" class="headerlink" title="调用时间"></a>调用时间</h4><p>无论何时一个对象被销毁，就会自动调用其析构函数</p>
 <ul>
-<li>Process: Ownership of memory, files, other resources</li>
-<li>Thread: Unit of execution we use to dispatch</li>
+<li>变量在离开其作用域时被销毁</li>
+<li>当一个对象被销毁时，其成员被销毁</li>
+<li>容器被销毁时，其元素被销毁</li>
+<li>对于动态分配的对象，当对指向它的指针应用delete运算符时被销毁</li>
+<li>对于临时对象，当创建它的完整表达式结束时被销毁</li>
 </ul>
-<h3 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits:"></a>Benefits:</h3><ul>
-<li>Resonsiveness(响应度高)</li>
-<li>Resource Sharing(资源共享)</li>
-<li>Economy(经济)</li>
-<li>Utilization of MP Architectures(多处理器体系结构的利用)</li>
-</ul>
-<h3 id="Multithreading-Models-多线程模型"><a href="#Multithreading-Models-多线程模型" class="headerlink" title="Multithreading Models(多线程模型)"></a>Multithreading Models(多线程模型)</h3><h4 id="User-and-Kernel-Threads"><a href="#User-and-Kernel-Threads" class="headerlink" title="User and Kernel Threads"></a>User and Kernel Threads</h4><ul>
-<li>User Threads: Thread management done by user-level threads library</li>
-<li>Kernel threads: Threads directly supported by the kernel</li>
-</ul>
-<h4 id="Many-to-One-多对一模型"><a href="#Many-to-One-多对一模型" class="headerlink" title="Many-to-One(多对一模型)"></a>Many-to-One(多对一模型)</h4><p>多对一模型将许多用户级线程映射到一个内核线程，线程管理是由线程库在用户空间进行的，因此效率比较高。但是如果一个线程执行阻塞了系统调用，那么整个进程会阻塞。而且，任何时候只有一个线程能够访问内核，多个线程不能并行运行在多处理器上。<br><img src="/img/Many_to_one.png" alt="Many_to_one.png"></p>
-<h4 id="One-to-One-一对一模型"><a href="#One-to-One-一对一模型" class="headerlink" title="One-to-One(一对一模型)"></a>One-to-One(一对一模型)</h4><p>一对一模型将每个用户线程映射到一个内核线程。当一个线程执行阻塞系统调用时，能允许另一个线程继续执行，也能够并行运行在多处理器系统上。但是每创建一个用户线程就需要创建一个相应的内盒线程，开销大，也就限制了线程数量。<br><img src="/img/one_to_one.png" alt="one_to_one.png"></p>
-<h4 id="Many-to-Many-多对多模型"><a href="#Many-to-Many-多对多模型" class="headerlink" title="Many-to-Many(多对多模型)"></a>Many-to-Many(多对多模型)</h4><p>多对多模型允许将多个用户线程映射到多个内核线程，同时能够创建足够多的内核线程。<br><img src="/img/one_to_one.png" alt="one_to_one.png"></p>
-<h4 id="Two-level-Model-二级模型"><a href="#Two-level-Model-二级模型" class="headerlink" title="Two-level Model(二级模型)"></a>Two-level Model(二级模型)</h4><p><img src="/img/two_level.png" alt="two_level.png"></p>
-<h3 id="Thread-Pools-线程池"><a href="#Thread-Pools-线程池" class="headerlink" title="Thread Pools(线程池)"></a>Thread Pools(线程池)</h3><p>线程池的主要思想是在进程开始时创建一定数量的线程，并放到池中等待工作。当服务器收到请求时，它会唤醒池中的一个线程(如果有可用的线程)，并将要处理的请求传递给它。一旦线程完成了服务，它会返回到池中等待工作。如果池中没有可用的线程，那么服务器会已知等待直到有空线程为止。<br>线程池具有如下有点：</p>
-<ul>
-<li>通常用现有线程处理请求要比等待创建新的线程要快</li>
-<li>线程池限制了在任何时候可用线程的数量。这对那些不能支持大量并发线程的系统非常重要</li>
-</ul>
-<h3 id="Thread-Specific-Data-线程特定数据"><a href="#Thread-Specific-Data-线程特定数据" class="headerlink" title="Thread Specific Data(线程特定数据)"></a>Thread Specific Data(线程特定数据)</h3><p>一个进程的线程共享进程数据，但是，某些情况下每个线程可能需要拥有自己一些数据的副本，这种数据称为线程特定数据，在我们区别一个进程中的某个线程时尤其有效</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -228,7 +209,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -284,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/15/thread/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/06/拷贝/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/17/2017年03月17日00-17-41/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          2017年03月17日00:17:41
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/15/GDB调试/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">GDB调试</div>
+    <a href="/2017/04/04/类的构造函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">类的构造函数</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -323,7 +295,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="thread" data-title="thread" data-url="http://yoursite.com/2017/03/15/thread/"></div>
+	<div class="ds-thread" data-thread-key="拷贝" data-title="拷贝" data-url="http://yoursite.com/2017/04/06/拷贝/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

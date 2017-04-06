@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/04/类的构造函数/index.html">
 <meta property="og:site_name" content="Th's blog">
 <meta property="og:description" content="什么是构造函数(constructor)每个类都分别定义了它的对象被初始化的方式，类通过一个或几个特殊的成员函数老控制其对象的初始化过程，这些函数叫做构造函数。">
-<meta property="og:updated_time" content="2017-04-04T09:17:02.262Z">
+<meta property="og:updated_time" content="2017-04-06T14:58:44.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类的构造函数">
 <meta name="twitter:description" content="什么是构造函数(constructor)每个类都分别定义了它的对象被初始化的方式，类通过一个或几个特殊的成员函数老控制其对象的初始化过程，这些函数叫做构造函数。">
@@ -173,9 +173,9 @@
 <li>对于创建一个const对象，直到构造函数完成初始化的过程，对象才真正取得其常量属性。</li>
 <li>类的常量数据成员的在构造函数中初始化使用初始值列表初始化(在函数体中是对常量成员的<strong>赋值，不是初始化</strong>，因此会导致错误)的方法</li>
 <li>同理，引用类的数据成员也必须<strong>初始化</strong>，规则同上。</li>
-<li>使用初始化列表初始化成员时，初始化的顺序与它们在类定义中的出现顺序一致，构造函数初始值列表中初始值的顺序的前后位置关系不会影响实际的初始化顺序。</li>
+<li>使用初始化列表初始化成员时，初始化的顺序与它们在类定义中的出现顺序一致，构造函数初始值列表中初始值的顺序的前后位置关系不会影响实际的初始化顺序。数据成员的初始化在函数体开始前就已完成</li>
+<li>建议<strong>使用构造函数初始值</strong>：在很多类中，初始化和赋值的区别事关底层效率的问题：前者直接初始化数据成员，后者先初始化再赋值；再者，一些数据成员必须被初始化，如const、引用、未提供默认构造函数的类</li>
 </ul>
-<p>建议<strong>使用构造函数初始值</strong>：在很多类中，初始化和赋值的区别事关底层效率的问题：前者直接初始化数据成员，后者先初始化再赋值；再者，一些数据成员必须被初始化，如const、引用、未提供默认构造函数的类</p>
 <h3 id="默认构造函数"><a href="#默认构造函数" class="headerlink" title="默认构造函数"></a>默认构造函数</h3><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>如果我们的类没有显示地定义任何构造函数，那么编译器会为我们隐式地定义一个默认构造函数。</p>
 <p>编译器创建地默认构造函数又称为合成地默认构造函数。初始化规则如下：</p>
 <ul>
@@ -303,6 +303,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/04/06/拷贝/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          拷贝
+        
+      </div>
+    </a>
+  
   
     <a href="/2017/04/04/Process Synchronization(进程同步)/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Process Synchronization(进程同步)</div>
@@ -427,11 +436,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
