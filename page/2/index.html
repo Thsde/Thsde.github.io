@@ -141,6 +141,63 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="开机流程与主引导分区-MBR"><a href="#开机流程与主引导分区-MBR" class="headerlink" title="开机流程与主引导分区(MBR)"></a>开机流程与主引导分区(MBR)</h2><p>BIOS是在开机的时候计算机系统会主动执行的第一个程序</p>
+<ul>
+<li>BIOS：一个写入到主板上的一个韧体(韧体就是写入到硬件上的一个软件程序)</li>
+<li>CMOS：记录各项硬件参数且嵌入在主板上的存储器</li>
+</ul>
+<p>开机流程如下：</p>
+<p>主动执行BIOS，识别第一个可开机的设备(如光盘、硬盘、U盘等) —&gt; MBR，第一个可开机设备的第一个扇区内的 主引导分区块，内包含引导加载程序 —&gt; 引导加载程序(Boot loader)，一支可读取内核文件来执行的软件。—&gt; 内核文件，开始操作系统的功能</p>
+<p>Boot loader是操作系统安装在MBR上的一套软件，主要包括</p>
+<ul>
+<li>提供菜单：用户可以选择不同的开机选项，是多重引导的重要功能</li>
+<li>载入内核文件：直接指向可开机的程序区段来开始操作系统</li>
+<li>转交其他loader：将引导加载功能转交给其他loader负责(因为引导加载程序除了可以安装在MBR之外，还可以安装在每个分区的引导扇区(boot sector))</li>
+</ul>
+<p>多重引导的工作：</p>
+<ul>
+<li>每个分区都拥有自己的启动扇区</li>
+<li>实际可开机的内核文件是放置到各分区内的</li>
+<li>loader只会识别自己的系统分区内的可开机内核文件，以及其他的loader而已</li>
+<li>loader可直接指向或者是间接将管理权转交给另一个管理程序</li>
+</ul>
+<h2 id="Linux安装模式下，磁盘分区的选择"><a href="#Linux安装模式下，磁盘分区的选择" class="headerlink" title="Linux安装模式下，磁盘分区的选择"></a>Linux安装模式下，磁盘分区的选择</h2><h3 id="目录树结构"><a href="#目录树结构" class="headerlink" title="目录树结构"></a>目录树结构</h3><p>所谓目录树结构就是以根目录为主，然后向下呈现分支状的目录结构的一种文件结构。</p>
+<h3 id="文件系统与目录树的关系-挂载"><a href="#文件系统与目录树的关系-挂载" class="headerlink" title="文件系统与目录树的关系(挂载)"></a>文件系统与目录树的关系(挂载)</h3><p>所谓的挂载就是利用一个目录当成进入点，将磁盘分区的数据放置在该目录下；也就是说，进入该目录就可以读取该分区的意思。这个操作称为挂载，进入点的目录称为“挂载点”。由于整个Linux系统最重要的就是根目录，因此根目录一定需要挂载到某个分区。至于其他的目录则可依用户自己的需求来给予挂载到不同的分区。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/31/Linux学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-CPU-Scheduling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -725,70 +782,6 @@
 
 
   
-    <article id="post-const" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/const/">C++中const的用法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/10/const/" class="archive-article-date">
-  	<time datetime="2017-03-10T04:30:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="const变量"><a href="#const变量" class="headerlink" title="const变量"></a>const变量</h3><p>const又叫做const限定符，用关键字const对变量的类型加以限定，可以使得变量的值不能被改变。<br>
-        
-          <a class="article-more-a" href="/2017/03/10/const/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/const/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -882,19 +875,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -903,6 +892,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
             
             <div class="clearfix"></div>
