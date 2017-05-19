@@ -141,6 +141,136 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-默认初始化和值初始化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/默认初始化和值初始化/">默认初始化和值初始化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/16/默认初始化和值初始化/" class="archive-article-date">
+  	<time datetime="2017-05-16T15:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/16/默认初始化和值初始化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-虚继承和动态绑定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/16/虚继承和动态绑定/">虚函数与动态绑定</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/16/虚继承和动态绑定/" class="archive-article-date">
+  	<time datetime="2017-05-16T14:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="虚函数定义"><a href="#虚函数定义" class="headerlink" title="虚函数定义"></a>虚函数定义</h2><p>基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。<font color="red">在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有<strong>定义</strong></font></p>
+<h2 id="动态绑定定义"><a href="#动态绑定定义" class="headerlink" title="动态绑定定义"></a>动态绑定定义</h2><p>如前所述，当使用基类的引用或指针调用一个虚函数时将发生动态绑定。此时，函数的运行版本由实参决定，即在运行时选择函数的版本，所以动态绑定也被称为运行时绑定。</p>
+<h2 id="静态类型和动态类型"><a href="#静态类型和动态类型" class="headerlink" title="静态类型和动态类型"></a>静态类型和动态类型</h2><p>当我们使用存在继承关系的类类型时，必须将一个变量或其他表达式的静态类型和动态类型区分。</p>
+<ul>
+<li>静态类型在编译时总是已知的，是变量声明时的类型或表达式生成的类型</li>
+<li>动态类型则是变量或表达式表示的内存中的对象的类型，直到运行时才可知</li>
+</ul>
+<p>如果表达式既不是引用或指针，则它的动态类型永远与静态类型一致，基类的指针或引用的静态类型<strong>可能</strong>与其动态类型不一致。</p>
+<h2 id="虚函数的调用"><a href="#虚函数的调用" class="headerlink" title="虚函数的调用"></a>虚函数的调用</h2><p>通过一个例子来学习：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">class</span> A &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  A() &#123;&#125;</div><div class="line">  ~A() &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">print_classname</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"A"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">class</span> B : <span class="keyword">public</span> A &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">  B() : A() &#123;&#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">print_classname</span><span class="params">()</span> override </span>&#123;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"B"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(A&amp; t)</span> </span>&#123;</div><div class="line">  t.print_classname();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">print2</span><span class="params">(A t)</span> </span>&#123;</div><div class="line">  t.print_classname();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">  A a;</div><div class="line">  B b;</div><div class="line">  print(a); <span class="comment">//打印出A</span></div><div class="line">  print(b); <span class="comment">//打印出B</span></div><div class="line">  print2(b); <span class="comment">//没有发生动态绑定，输出A</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意到，A是一个基类，且其中有虚函数print_classname，而B是A的一个派生类，注意到B中关于print_classname的函数声明前面没有virtual关键字，这是因为基类中的虚函数在派生类中也默认是虚函数；而且B中print_classname参数列表跟着的override关键字，是c++11标准中允许显式地对继承来的虚函数的重新定义。</p>
+<font color="red">当虚函数通过指针或引用调用时，编译器产生的代码直到运行时才能确定应该调用哪个版本的函数。被调用的函数是与绑定到引用或指针上的对象的<strong>动态类型</strong>相匹配的那一个。</font>
+
+<p>正如上面代码中，可以看到print函数通过基类的引用作为形参，而在函数体中通过基类的引用调用print_classname。此时，就发生了动态绑定，可以预料到，程序运行的结果就如注释中一般。</p>
+<p>注意到main函数中最后调用的print2函数，当我们通过一个普通类型（非引用非指针）的表达式调用虚函数时，<strong>在编译时就会将调用的版本确定下来。</strong></p>
+<h2 id="派生类中的虚函数"><a href="#派生类中的虚函数" class="headerlink" title="派生类中的虚函数"></a>派生类中的虚函数</h2><p>当我们在派生类中覆盖某个虚函数时，可以再使用virtual关键字指出，但不是必须，因为一个函数一旦被声明为虚函数，则在所有的派生类中都是虚函数。</p>
+<p>一个派生类的函数如果覆盖了某个继承而来的虚函数，则它的形参类型和返回类型必须与被它覆盖的基类函数完全一致。但存在例外，当类的虚函数返回类型是类本身的指针或引用时，派生类中的虚函数的返回类型不需要与基类中相同。</p>
+<h2 id="虚函数与默认实参"><a href="#虚函数与默认实参" class="headerlink" title="虚函数与默认实参"></a>虚函数与默认实参</h2><p>同其他函数一样，虚函数也可以拥有默认实参。如果某次函数调用使用了默认实参，则该实参值由本次调用的<font color="red">静态类型</font>决定。</p>
+<p>即如果我们通过基类的引用或指针调用寒素，则使用基类中定义的默认实参。即使实际运行的是派生类中函数版本也是如此。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/16/虚继承和动态绑定/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2017年5月13日00-26-04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -653,138 +783,6 @@
 
 
   
-    <article id="post-Process Synchronization(进程同步)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/04/Process Synchronization(进程同步)/">Process Synchronization(进程同步)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/04/Process Synchronization(进程同步)/" class="archive-article-date">
-  	<time datetime="2017-04-04T02:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h3><ul>
-<li>对共享数据的并发请求会导致数据的不一致</li>
-<li>维持数据的一致需要一个能确保共享同一逻辑地址的协作进程可以有序地执行</li>
-</ul>
-<p><br /></p>
-        
-          <a class="article-more-a" href="/2017/04/04/Process Synchronization(进程同步)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/04/Process Synchronization(进程同步)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-类的this指针" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/01/类的this指针/">类的this指针</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/01/类的this指针/" class="archive-article-date">
-  	<time datetime="2017-04-01T14:36:51.264Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>成员函数通过一个名为this的额外的隐式参数来访问调用它的那个对象。当我们调用一个成员函数时，用请求该函数的对象地址初始化this。<br>
-        
-          <a class="article-more-a" href="/2017/04/01/类的this指针/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/01/类的this指针/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -878,11 +876,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -890,15 +888,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
               <li class="article-tag-list-item">
