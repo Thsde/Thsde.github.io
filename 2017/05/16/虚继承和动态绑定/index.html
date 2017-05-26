@@ -8,19 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>虚函数与动态绑定 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="虚函数定义基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有定义
-动态绑定定义如前所述，当使用基类的引用或指针调用一个虚函数时将发生动态绑定。此时，">
+  <meta name="description" content="虚函数定义基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有定义">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚函数与动态绑定">
 <meta property="og:url" content="http://yoursite.com/2017/05/16/虚继承和动态绑定/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="虚函数定义基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有定义
-动态绑定定义如前所述，当使用基类的引用或指针调用一个虚函数时将发生动态绑定。此时，">
-<meta property="og:updated_time" content="2017-05-16T16:14:26.177Z">
+<meta property="og:description" content="虚函数定义基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有定义">
+<meta property="og:updated_time" content="2017-05-26T16:07:14.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="虚函数与动态绑定">
-<meta name="twitter:description" content="虚函数定义基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有定义
-动态绑定定义如前所述，当使用基类的引用或指针调用一个虚函数时将发生动态绑定。此时，">
+<meta name="twitter:description" content="虚函数定义基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有定义">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -167,6 +164,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="虚函数定义"><a href="#虚函数定义" class="headerlink" title="虚函数定义"></a>虚函数定义</h2><p>基类将类型相关的函数与派生类不做改变直接继承的函数区别对待。对于某些函数，基类希望它的派生类各自定义适合自身的版本，此时基类就将这些函数声明成虚函数。<font color="red">在C++语言中，当我们使用基类的引用或指针调用一个虚函数时会执行动态绑定。因此我们直到运行时才能知道到底调用了哪个版本的虚函数，所以所有的虚函数都必须有<strong>定义</strong></font></p>
+<a id="more"></a>
 <h2 id="动态绑定定义"><a href="#动态绑定定义" class="headerlink" title="动态绑定定义"></a>动态绑定定义</h2><p>如前所述，当使用基类的引用或指针调用一个虚函数时将发生动态绑定。此时，函数的运行版本由实参决定，即在运行时选择函数的版本，所以动态绑定也被称为运行时绑定。</p>
 <h2 id="静态类型和动态类型"><a href="#静态类型和动态类型" class="headerlink" title="静态类型和动态类型"></a>静态类型和动态类型</h2><p>当我们使用存在继承关系的类类型时，必须将一个变量或其他表达式的静态类型和动态类型区分。</p>
 <ul>
@@ -401,19 +399,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -422,6 +416,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Th&#39;s blog</title>
+  <title>继承中成员函数名字查找 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Th's blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="继承中类成员的名字查找要理解继承中成员函数的调用过程首先我们必须先了解一些概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="继承中成员函数名字查找">
+<meta property="og:url" content="http://yoursite.com/2017/05/27/继承中成员函数名字查找/index.html">
 <meta property="og:site_name" content="Th's blog">
+<meta property="og:description" content="继承中类成员的名字查找要理解继承中成员函数的调用过程首先我们必须先了解一些概念">
+<meta property="og:updated_time" content="2017-05-26T16:06:56.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Th's blog">
+<meta name="twitter:title" content="继承中成员函数名字查找">
+<meta name="twitter:description" content="继承中类成员的名字查找要理解继承中成员函数的调用过程首先我们必须先了解一些概念">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -139,36 +143,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-继承中成员函数名字查找" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/04/类的构造函数/" class="archive-article-date">
-  	<time datetime="2017-04-04T02:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/04/类的构造函数/">类的构造函数</a>
+    <h1 class="article-title" itemprop="name">
+      继承中成员函数名字查找
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/05/27/继承中成员函数名字查找/" class="archive-article-date">
+  	<time datetime="2017-05-26T16:06:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="继承中类成员的名字查找"><a href="#继承中类成员的名字查找" class="headerlink" title="继承中类成员的名字查找"></a>继承中类成员的名字查找</h2><p>要理解继承中成员函数的调用过程首先我们必须先了解一些概念</p>
+<a id="more"></a>
+<ul>
+<li><a href="https://thsde.github.io/2017/05/16/%E8%99%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A/" target="_blank" rel="external">静态类型</a> : 静态类型是指在编译是已知的的，是变量声明时的类型或表达式生成的类型</li>
+<li><a href="https://thsde.github.io/2017/05/16/%E8%99%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A/" target="_blank" rel="external">动态类型</a> : 动态类型则是变量或表达式表示的内存中的对象的类型，动态类型直到运行时才可知</li>
+<li>继承中的类作用域 : 每个类定义自己的作用域，派生类的作用域嵌套在其基类的作用域之中</li>
+</ul>
+<p>接下来正式介绍其中的函数调用中的名字查找</p>
+<p>假定我们调用p类的成员函数mem(), 分为以下4步：</p>
+<ul>
+<li>首先确定p的<strong>静态类型</strong></li>
+<li>在其<strong>静态类型</strong>中查找mem，如果过找不到，则依次在其<strong>直接基类</strong>中查找直至继承链的顶端，如果找不到则是<strong>编译错误</strong></li>
+<li>一旦找到了，进行常规的类型检查（检查参数的个数，类型等）用于确认调用合法</li>
+<li>假如调用合法，在根据调用的是否是虚函数产生不同的代码<ul>
+<li>如果mem()是虚函数，而且是通过指针或引用调用的，则根据<strong>动态类型</strong>在运行时决定调用哪个版本的虚函数</li>
+<li>如果不是虚函数，或者是由对象直接调用，则直接就是常规的函数调用</li>
+</ul>
+</li>
+</ul>
+<p>值得一提的是第二步与第三步之间体现出的思想——-名字查找先于类型检查，这很好的解释了子类对其基类函数的隐藏</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Base()</div><div class="line">  &#123;</div><div class="line">    void f();</div><div class="line">  &#125;</div><div class="line">class Derive() : public Base</div><div class="line">  &#123;</div><div class="line">    void f(int);</div><div class="line">  &#125;</div><div class="line">int main()</div><div class="line">  &#123;</div><div class="line">     Derive D;</div><div class="line">     Base* bp = &amp;D;</div><div class="line">     Derive* dp = &amp;D；</div><div class="line">     bp-&gt;f();//正确调用Base::f()</div><div class="line">	 bp-&gt;f(1);//编译出错，虽然其动态类型中Derive 有f(int) 但是函数名字查找是从静态类型开始的，而f(int)在基类Base中不存在;</div><div class="line">	 dp-&gt;f();//错误，看似正确因基类中有f()这个函数，但是由于名字查找先于类型检查，编译器由静态类型开始查找在Derive作用域中找到了f名字的函数就停止名字查找了，然后就进行类型检查所以就出错了</div><div class="line">  	 dp-&gt;f(1);//正确调用</div><div class="line">  &#125;</div><div class="line">//这时可以通过在派生类中的采用using f，来将基类作用域中的f函数（包括所有重载版本）引入派生类的作用域中可以让其成功调用;</div></pre></td></tr></table></figure>
+<h3 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h3><p>在继承体系分为3种函数：</p>
+<ul>
+<li><strong>non virtual</strong> 非虚函数</li>
+<li><strong>virtual</strong> 虚函数</li>
+<li><strong>pure virtual</strong> 纯虚函数</li>
+</ul>
+<p>这三种函数对应不同的继承类型，继承接口，继承实现</p>
+<p>其中非虚函数要求其子类<strong>继承接口</strong>和<strong>强制继承其实现</strong>（要求不要重写，以公有继承为例，重写违背了is-a 的要求）</p>
+<p>虚函数要求其子类<strong>继承接口</strong>和一份<strong>默认实现</strong>（子类可以选择自由选择是否重写）</p>
+<p>纯虚函数要求函数<strong>继承接口</strong>（要求子类种一定要有该函数和一份自己的实现）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//举一个&lt;&lt;effective c++&gt;&gt;中的一个例子</span></div><div class="line">AirPlane &#123;</div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span></span></div><div class="line">    &#123;...&#125;</div><div class="line">&#125;</div><div class="line">ModelB : <span class="keyword">public</span> AirPlane &#123;&#125;</div><div class="line">ModelB b</div><div class="line">AirPlane* a = b;</div><div class="line">b-&gt;fly();</div></pre></td></tr></table></figure>
+<p>上面的例子fly（）是一个虚函数，ModelB中是并没由写fly（）函数，继承了一份默认的实现，但是该代码可以顺利通过编译，可以调用基类中的fly(), 这是不合逻辑的。我们可以通过将基类fly函数定义为纯虚函数来在编译的时候就发现该错误。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">AirPlane</div><div class="line">  &#123;</div><div class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">fly</span><span class="params">()</span> </span>= <span class="keyword">delete</span>;</div><div class="line">  &#125;</div><div class="line">ModelB : <span class="keyword">public</span> AirPlane</div><div class="line">&#123;&#125;</div><div class="line">ModelB b;</div><div class="line">AirPlane* a = b;</div><div class="line">b-&gt;fly();<span class="comment">//编译出错 ' error: use of deleted function 'virtual void AirPlane::fly()''</span></div></pre></td></tr></table></figure>
+<p>分析一下两份代码的成员函数调用：</p>
+<p>都是查找到了基类中的fly函数，由于第二份声明为纯虚函数在尝试调用是发生了编译错误.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -180,348 +218,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/27/继承中成员函数名字查找/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/04/Process Synchronization(进程同步)/" class="archive-article-date">
-  	<time datetime="2017-04-04T02:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-04</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/04/Process Synchronization(进程同步)/">Process Synchronization(进程同步)</a>
-    </h1>
+  
+    <a href="/2017/05/16/默认初始化和值初始化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">默认初始化和值初始化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="继承中成员函数名字查找" data-title="继承中成员函数名字查找" data-url="http://yoursite.com/2017/05/27/继承中成员函数名字查找/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/01/类的this指针/" class="archive-article-date">
-  	<time datetime="2017-04-01T14:36:51.264Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/01/类的this指针/">类的this指针</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/01/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-01T14:36:51.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/31/Linux学习/" class="archive-article-date">
-  	<time datetime="2017-03-31T14:18:29.448Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-31</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/22/CPU-Scheduling/" class="archive-article-date">
-  	<time datetime="2017-03-22T01:05:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/22/CPU-Scheduling/">CPU Scheduling</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/17/2017年03月17日00-17-41/" class="archive-article-date">
-  	<time datetime="2017-03-16T16:17:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/17/2017年03月17日00-17-41/">随写</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/15/thread/" class="archive-article-date">
-  	<time datetime="2017-03-15T15:09:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/15/thread/">thread</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/15/GDB调试/" class="archive-article-date">
-  	<time datetime="2017-03-15T05:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/15/GDB调试/">GDB调试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">调试技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/13/instruction/" class="archive-article-date">
-  	<time datetime="2017-03-13T15:01:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/13/instruction/">指令集</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机组成</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -544,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
