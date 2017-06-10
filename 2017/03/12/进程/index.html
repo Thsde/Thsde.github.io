@@ -24,9 +24,10 @@
 数据段 (data section)">
 <meta property="og:image" content="http://yoursite.com/img/process_in_memory.png">
 <meta property="og:image" content="http://yoursite.com/img/process_states.png">
+<meta property="og:image" content="http://yoursite.com/img/进程调度队列.png">
 <meta property="og:image" content="http://yoursite.com/img/process_creation.png">
 <meta property="og:image" content="http://yoursite.com/img/communication_models.png">
-<meta property="og:updated_time" content="2017-03-26T06:12:44.000Z">
+<meta property="og:updated_time" content="2017-06-10T15:51:55.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程">
 <meta name="twitter:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行。一个进程包括以下三个方面
@@ -188,130 +189,125 @@
 </ul>
 <a id="more"></a>
 <p>程序包括代码段、当前活动（通过PC的值和处理器寄存器的内容来表示）、堆栈段（包括临时数据，如函数参数、返回地址和局部变量）和数据段（包括全局变量），可能还包括堆(heap)，进程在运行期间动态分配的内存。</p>
-<p>如下图所示：</p>
-<blockquote>
-<p><img src="/img/process_in_memory.png" alt="process_in_memory.png"></p>
-</blockquote>
-<hr>
+<p>如下图所示：<br><img src="/img/process_in_memory.png" alt="process_in_memory.png"></p>
 <h2 id="Process-State"><a href="#Process-State" class="headerlink" title="Process State"></a>Process State</h2><ul>
-<li>new(创建): The proces is being created</li>
+<li>new(创建): The process is being created</li>
 <li>running(运行): <strong>Instructions</strong> are being executed</li>
 <li>waiting(等待): The process is waiting for some event to occur</li>
 <li>ready(就绪): The process is waiting to be assigned to a processor</li>
 <li>terminated(终止): The process has finished execution</li>
 </ul>
-<p>进程五状态表：</p>
-<blockquote>
-<p><img src="/img/process_states.png" alt="process_states.png"></p>
-<hr>
-</blockquote>
+<p>进程五状态表：<br><img src="/img/process_states.png" alt="process_states.png"></p>
 <h2 id="Process-Control-Block-PCB"><a href="#Process-Control-Block-PCB" class="headerlink" title="Process Control Block(PCB)"></a>Process Control Block(PCB)</h2><p>每个进程在操作系统内用进程控制块来表示，它包含许多与一个特定进程相关的信息。</p>
 <ul>
 <li>Process state: 包括创建、就绪、运行、等待、停止等</li>
 <li>Program counter: 表示进程要执行的下个指令的地址</li>
-<li>CPU registers</li>
-<li>CPU scheduling information</li>
-<li>Memory-management information</li>
-<li>Accounting information</li>
-<li>I/O status information</li>
+<li>CPU registers: 进程所使用到的寄存器的信息，在中断时需要保存，以便进程以后能正确执行</li>
+<li>CPU scheduling information: 进程优先级、调度队列的指针和其他调度参数(<strong>进程调度讨论</strong>)</li>
+<li>Memory-management information: 基址寄存器和限址寄存器的值，页表或段表</li>
+<li>Accounting information(审计信息): CPU时间、实际使用时间、时间界限、审计数据</li>
+<li>I/O status information: 分配给进程的IO设备列表、打开的文件列表等</li>
 </ul>
-<hr>
 <h2 id="Process-Scheduling"><a href="#Process-Scheduling" class="headerlink" title="Process Scheduling"></a>Process Scheduling</h2><p>为了最大效率地利用CPU，<strong>进程调度</strong>选择一个可用的进程到CPU上执行。</p>
-<h6 id="Process-Scheduling-Queues-调度队列"><a href="#Process-Scheduling-Queues-调度队列" class="headerlink" title="Process Scheduling Queues(调度队列)"></a>Process Scheduling Queues(调度队列)</h6><ul>
+<h3 id="Process-Scheduling-Queues-调度队列"><a href="#Process-Scheduling-Queues-调度队列" class="headerlink" title="Process Scheduling Queues(调度队列)"></a>Process Scheduling Queues(调度队列)</h3><ul>
 <li>Job queue – set of all processes in the system</li>
 <li>Ready queue – set of all processes residing in main memory, ready and waiting to execute</li>
 <li>Device queues – set of processes waiting for an I/O device</li>
 </ul>
 <p><strong>Processes migrate(迁移) among the various queues</strong></p>
-<h6 id="Scheduler-调度程序"><a href="#Scheduler-调度程序" class="headerlink" title="Scheduler(调度程序)"></a>Scheduler(调度程序)</h6><p>进程在其生命周期中会在各种调度队列之间迁移。为了调度，操作系统必须按某种方式从这些队列中选择进程。进程选择是由相应的调度程序来执行的。</p>
+<p>新进程开始处于就绪队列。在就绪队列中等待直到被选中执行或被分派。当进程分配到CPU执行时，可能发生下面几种事件中的一种：</p>
 <ul>
-<li>长期调度程序(long-term scheduler)：又叫做作业调度程序(job scheduler)从存放”进程”的大容量存储设备的缓存池中选择进程，并加载进内存准备执行。</li>
+<li>进程可能发出一个IO请求，并被放到IO队列中</li>
+<li>进程可能创建一个新的子进程，并等待其结束</li>
+<li>进程可能会由于中断而强制释放CPU，并被放回到就绪队列</li>
+</ul>
+<p><img src="/img/进程调度队列.png" alt="进程调度队列"></p>
+<h3 id="Scheduler-调度程序"><a href="#Scheduler-调度程序" class="headerlink" title="Scheduler(调度程序)"></a>Scheduler(调度程序)</h3><p>进程在其生命周期中会在各种调度队列之间迁移。为了调度，操作系统必须按某种方式从这些队列中选择进程。进程选择是由相应的调度程序来执行的。</p>
+<ul>
+<li>长期调度程序(long-term scheduler)：又叫做作业调度程序(job scheduler)从存放”进程”的大容量存储设备的缓存池中选择进程，并加载进内存准备执行，一般与进程的创建相关。</li>
 <li>短期调度程序(short-term scheduler)：又叫做CPU调度程序，从准备执行的进程中选择进程，并为之分配CPU。</li>
 <li>中期调度程序(medium-term scheduler)：核心思想是能将进程从内存中移出，从而降低多道程序设计的程度。之后，进程能被重新调入内存，并从中断处继续执行。这种方案称为交换(swapping)</li>
 </ul>
 <p><strong>长期调度程序被调用的频率比较低，短期调度程序被调用的频率比较高</strong></p>
-<h6 id="Context-Switch-上下文切换"><a href="#Context-Switch-上下文切换" class="headerlink" title="Context Switch(上下文切换)"></a>Context Switch(上下文切换)</h6><p>将CPU切换到另一个进程需要保存当前进程的状态（保存在PCB中）并恢复另一个进程的状态，这一任务称为上下文切换</p>
-<hr>
-<h2 id="Operations-on-Processes-进程操作"><a href="#Operations-on-Processes-进程操作" class="headerlink" title="Operations on Processes(进程操作)"></a>Operations on Processes(进程操作)</h2><h6 id="进程创建-Process-Creation"><a href="#进程创建-Process-Creation" class="headerlink" title="进程创建(Process Creation)"></a>进程创建(Process Creation)</h6><p>进程在其执行过程中，能通过创建进程系统调用创建多个新进程。创建进程称为父进程，而新进程称为子进程。每个新进程可以在创建其他进程，从而行程了进程树。</p>
+<h3 id="Context-Switch-上下文切换"><a href="#Context-Switch-上下文切换" class="headerlink" title="Context Switch(上下文切换)"></a>Context Switch(上下文切换)</h3><p>将CPU切换到另一个进程需要保存当前进程的状态（保存在PCB中）并恢复另一个进程的状态，这一任务称为上下文切换</p>
+<h2 id="Operations-on-Processes-进程操作"><a href="#Operations-on-Processes-进程操作" class="headerlink" title="Operations on Processes(进程操作)"></a>Operations on Processes(进程操作)</h2><h3 id="进程创建-Process-Creation"><a href="#进程创建-Process-Creation" class="headerlink" title="进程创建(Process Creation)"></a>进程创建(Process Creation)</h3><p>进程在其执行过程中，能通过创建进程系统调用创建多个新进程。创建进程称为父进程，而新进程称为子进程。每个新进程可以在创建其他进程，从而行程了进程树。</p>
 <p><img src="/img/process_creation.png" alt="process_creation.png"></p>
 <p>创建进程的两种可能：</p>
-<blockquote>
-<p>1、父进程与子进程并发(concurrently)执行<br>2、父进程等待，直到某个或全部子进程执行完</p>
-</blockquote>
+<ol>
+<li>父进程与子进程并发(concurrently)执行</li>
+<li>父进程等待，直到某个或全部子进程执行完</li>
+</ol>
 <p>新进程的地址空间的两种可能：</p>
-<blockquote>
-<p>1、子进程是父进程的复制品（具有和父进程相同的程序和数据）<br>2、子进程装入另一个新程序</p>
-</blockquote>
+<ol>
+<li>子进程是父进程的复制品（具有和父进程相同的程序和数据）</li>
+<li>子进程装入另一个新程序</li>
+</ol>
 <p>资源共享：</p>
-<blockquote>
-<p>1、父进程和子进程共享所有资源<br>2、父进程分配一部分资源给子进程<br>3、父进程和子进程没有共享资源</p>
-</blockquote>
-<h6 id="进程终止-Process-Termination"><a href="#进程终止-Process-Termination" class="headerlink" title="进程终止(Process Termination)"></a>进程终止(Process Termination)</h6><p>当进程完成执行最后的语句并使用系统调用exit()请求操作系统删除自身时，进程终止。这是，进程可以返回状态值到父进程。所有进程资源被操作系统释放。<br>父进程终止子进程的原因：</p>
-<blockquote>
-<p>1、子进程使用了超过它被分配的一些资源<br>2、分配给子进程的任务已不再需要<br>3、父进程退出，如果父进程退出，操作系统不允许子进程继续，这称为级联终止(cascading termination)</p>
-</blockquote>
-<hr>
-<h2 id="Cooperating-Processes-协作进程"><a href="#Cooperating-Processes-协作进程" class="headerlink" title="Cooperating Processes(协作进程)"></a>Cooperating Processes(协作进程)</h2><p>生产者-消费者问题是协作进程的通用范例。生产者进程产生信息以供消费者进程消费。</p>
-<blockquote>
-<p>为了允许生产者进程和消费者进程能并发执行，必须要有一个缓冲来被生产者填充并被消费者所使用。此缓冲驻留在生产者进程和消费者进程的共享内存区域内，当消费者使用一项时，生产者能产生另一项。生产者和消费者必须同步，以免消费者消费一个没有生产出来的项。</p>
-</blockquote>
+<ol>
+<li>父进程和子进程共享所有资源</li>
+<li>父进程分配一部分资源给子进程</li>
+<li>父进程和子进程没有共享资源</li>
+</ol>
+<h3 id="进程终止-Process-Termination"><a href="#进程终止-Process-Termination" class="headerlink" title="进程终止(Process Termination)"></a>进程终止(Process Termination)</h3><p>当进程完成执行最后的语句并使用系统调用exit()请求操作系统删除自身时，进程终止。这是，进程可以返回状态值到父进程。所有进程资源被操作系统释放。<br>父进程终止子进程的原因：</p>
+<ol>
+<li>子进程使用了超过它被分配的一些资源</li>
+<li>分配给子进程的任务已不再需要</li>
+<li>父进程退出，如果父进程退出，操作系统不允许子进程继续，这称为级联终止(cascading termination)</li>
+</ol>
+<h2 id="Interprocess-Communication-进程间通信IPC"><a href="#Interprocess-Communication-进程间通信IPC" class="headerlink" title="Interprocess Communication(进程间通信IPC)"></a>Interprocess Communication(进程间通信IPC)</h2><p>独立进程：一个进程不能影响其他进程或被其他进程所影响</p>
+<p>协作进程：系统中一个进程能影响其他进程或被其他进程所影响</p>
+<p>优点：</p>
+<ul>
+<li>信息共享</li>
+<li>提高运算速度</li>
+<li>模块化</li>
+<li>方便</li>
+</ul>
+<h3 id="Cooperating-Processes-协作进程"><a href="#Cooperating-Processes-协作进程" class="headerlink" title="Cooperating Processes(协作进程)"></a>Cooperating Processes(协作进程)</h3><p>生产者-消费者问题是协作进程的通用范例。生产者进程产生信息以供消费者进程消费。<br>为了允许生产者进程和消费者进程能并发执行，必须要有一个缓冲来被生产者填充并被消费者所使用。此缓冲驻留在生产者进程和消费者进程的共享内存区域内，当消费者使用一项时，生产者能产生另一项。生产者和消费者必须同步，以免消费者消费一个没有生产出来的项。</p>
 <p>缓冲主要存在两种：</p>
-<blockquote>
-<p>1、无限缓冲(unbounded-buffer)：对缓冲大小没有限制。消费者可能不得不等待新的项，但生产者总是可以产生新项<br>2、有限缓冲(bounded-buffer)：缓冲固定，若缓冲为空，消费者必须等待；若缓冲为满，生产者必须等待</p>
-</blockquote>
-<hr>
-<h2 id="Interprocess-Communication-进程间通信IPC"><a href="#Interprocess-Communication-进程间通信IPC" class="headerlink" title="Interprocess Communication(进程间通信IPC)"></a>Interprocess Communication(进程间通信IPC)</h2><p>通信模型：</p>
-<blockquote>
-<p><img src="/img/communication_models.png" alt="communication_models.png"></p>
-</blockquote>
-<h5 id="共享内存系统"><a href="#共享内存系统" class="headerlink" title="共享内存系统"></a>共享内存系统</h5><p>通过生产者-消费者问题，协作进程加以实现</p>
-<h5 id="消息传递系统"><a href="#消息传递系统" class="headerlink" title="消息传递系统"></a>消息传递系统</h5><p>消息传递是由操作系统提供机制，让协作进程能通过消息传递工具来进行通信。消息传递工具提供至少两种操作：发送和接受。<br>send(),receive()操作方法：</p>
-<blockquote>
+<ol>
+<li>无限缓冲(unbounded-buffer)：对缓冲大小没有限制。消费者可能不得不等待新的项，但生产者总是可以产生新项</li>
+<li>有限缓冲(bounded-buffer)：缓冲固定，若缓冲为空，消费者必须等待；若缓冲为满，生产者必须等待</li>
+</ol>
+<h3 id="通信模型"><a href="#通信模型" class="headerlink" title="通信模型"></a>通信模型</h3><p><img src="/img/communication_models.png" alt="communication_models.png"></p>
+<p>左图表示消息传递模型；右图表示共享内存模型。</p>
+<h3 id="共享内存系统"><a href="#共享内存系统" class="headerlink" title="共享内存系统"></a>共享内存系统</h3><p>生产者-消费者问题，通过缓冲来实现。</p>
+<h3 id="消息传递系统"><a href="#消息传递系统" class="headerlink" title="消息传递系统"></a>消息传递系统</h3><p>消息传递是由操作系统提供机制，让协作进程能通过消息传递工具来进行通信。消息传递工具提供至少两种操作：发送和接受。<br>send(),receive()操作方法：</p>
 <ul>
 <li>直接或间接通信</li>
 <li>同步或异步通信</li>
 <li>自动或显式缓冲</li>
 </ul>
-</blockquote>
-<h6 id="直接或间接通信"><a href="#直接或间接通信" class="headerlink" title="直接或间接通信"></a>直接或间接通信</h6><p><strong>对于直接通信，需要通信的每个进程明确地命名通信的接受者或发送者。</strong></p>
+<h4 id="直接或间接通信"><a href="#直接或间接通信" class="headerlink" title="直接或间接通信"></a>直接或间接通信</h4><p><strong>对于直接通信，需要通信的每个进程明确地命名通信的接受者或发送者。</strong></p>
 <p>直接通信的通信线路具有如下特点：</p>
-<blockquote>
 <ul>
-<li>在需要通信的每队进程之间自动建立线路。进程只需要知道相互通信的标识符。</li>
+<li>在需要通信的每对进程之间自动建立线路。进程只需要知道相互通信的标识符。</li>
 <li>一个线路只与两个进程相关。</li>
-<li>每队进程之间只有一个线路。</li>
+<li>每对进程之间只有一个线路。</li>
 </ul>
-</blockquote>
-<p><strong>这种方案展示了对称寻址，即发送和接受进程必须命名对方以便通信。另外有非对称寻址，即只要发送者命名接受者，而接受者不需要命名发送者。</strong></p>
-<hr>
+<p><strong>这种方案展示了对称寻址，即发送和接受进程必须命名对方以便通信。另外有非对称寻址，即只要发送者命名接受者，而接受者不需要命名发送者。也就是单向和双向的区别。</strong></p>
 <p><strong>间接通信：通过邮箱或端口来发送和接受信息。邮箱可以抽象成一个对象，进程可以向其中存放消息，也可以从中删除消息，每个邮箱都有一个唯一的标识符。</strong><br>间接通信的通信线路具有如下属性：</p>
-<blockquote>
 <ul>
 <li>只有在两个进程共享一个邮箱时，才能建立通信线路。</li>
 <li>一个线路可以与两个或更多的进程相关联</li>
 <li>两个通信进程之间可有多个不同的线路，每个线路对应于一个邮箱</li>
 </ul>
-</blockquote>
-<h6 id="同步和异步通信"><a href="#同步和异步通信" class="headerlink" title="同步和异步通信"></a>同步和异步通信</h6><p>消息传递可以是阻塞(block)或非阻塞 —— 也称为同步或异步</p>
-<blockquote>
+<h4 id="同步和异步通信"><a href="#同步和异步通信" class="headerlink" title="同步和异步通信"></a>同步和异步通信</h4><p>消息传递可以是阻塞(block)或非阻塞 —— 也称为同步或异步</p>
 <ul>
-<li>阻塞send：发送进程阻塞，知道消息被接收或被邮箱所接收</li>
+<li>阻塞send：发送进程阻塞，直到消息被接收或被邮箱所接收</li>
 <li>非阻塞send：发送进程发送消息并继续操作 </li>
 <li>阻塞receive：接受者阻塞，直到有消息可用</li>
 <li>非阻塞receive：接受者收到一个有效消息或空消息</li>
 </ul>
-</blockquote>
-<h6 id="自动或显式缓冲"><a href="#自动或显式缓冲" class="headerlink" title="自动或显式缓冲"></a>自动或显式缓冲</h6><p>不管通信是直接的或是间接的，通信进程所交换的消息都驻留在临时队列中。</p>
-<blockquote>
+<h4 id="自动或显式缓冲"><a href="#自动或显式缓冲" class="headerlink" title="自动或显式缓冲"></a>自动或显式缓冲</h4><p>不管通信是直接的或是间接的，通信进程所交换的消息都驻留在临时队列中。</p>
 <ul>
-<li>零容量：线路中不能有任何消息处于等待，必须阻塞发送，知道接收者接收到信息。</li>
-<li>有限容量：队列长度为有限的n，最多只能有n个消息驻留其中，若未满，可以接收新消息，且发送者可继续执行不必等待。若容量已满，必须阻塞发送直到队列中的空间可用为之。</li>
+<li>零容量：线路中不能有任何消息处于等待，必须阻塞发送，直到接收者接收到信息。</li>
+<li>有限容量：队列长度为有限的n，最多只能有n个消息驻留其中，若未满，可以接收新消息，且发送者可继续执行不必等待。若容量已满，必须阻塞发送直到队列中的空间可用为止。</li>
 <li>无限容量：队列长度无线，从不阻塞发送者</li>
 </ul>
-</blockquote>
 <p><strong>零容量情况称为没有缓冲的消息系统，其他情况称为自动缓冲。</strong></p>
-<hr>
-<h2 id="Communication-in-Client-Server"><a href="#Communication-in-Client-Server" class="headerlink" title="Communication in Client-Server"></a>Communication in Client-Server</h2>
+<h3 id="共享内存和消息传递两种方式对比"><a href="#共享内存和消息传递两种方式对比" class="headerlink" title="共享内存和消息传递两种方式对比"></a>共享内存和消息传递两种方式对比</h3><p>消息传递对于交换较少数量的数据很有用，因为不需要避免冲突。对于计算机间的通信，消息传递也比共享内存更易于实现。共享内存允许以最快的速度进行方便的通信，在计算机中可以达到内存的速度。共享内存比消息传递快，消息传递系统通常用系统调用来实现，因此需要更多的内核介入时间消耗。与此相反，在共享内存系统中，仅在建立共享内存区域时需要系统调用，一旦建立了共享内存，所有的访问都被处理为常规的内存访问，不需要来自内核的帮助。</p>
+
       
 
       
@@ -557,6 +553,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">调试技术</a>
               </li>
              
@@ -565,15 +565,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
             
             <div class="clearfix"></div>
