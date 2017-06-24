@@ -8,20 +8,26 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>CPU Scheduling | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
+  <meta name="description" content="CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的吞吐率。
+
+Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CPU Scheduling">
 <meta property="og:url" content="http://yoursite.com/2017/03/22/CPU-Scheduling/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
+<meta property="og:description" content="CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的吞吐率。
+
+Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请">
 <meta property="og:image" content="http://yoursite.com/img/cpu.png">
 <meta property="og:image" content="http://yoursite.com/img/cpu_time_histogram.png">
 <meta property="og:image" content="http://yoursite.com/img/multilevel_queue.png">
 <meta property="og:image" content="http://yoursite.com/img/multilevel_feedback.png">
-<meta property="og:updated_time" content="2017-04-04T02:19:47.253Z">
+<meta property="og:updated_time" content="2017-06-24T15:44:19.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CPU Scheduling">
-<meta name="twitter:description" content="Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。">
+<meta name="twitter:description" content="CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的吞吐率。
+
+Basic ConceptsMaximum CPU utilization obtained with multiprogramming:对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请">
 <meta name="twitter:image" content="http://yoursite.com/img/cpu.png">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
@@ -168,54 +174,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h3><h5 id="Maximum-CPU-utilization-obtained-with-multiprogramming"><a href="#Maximum-CPU-utilization-obtained-with-multiprogramming" class="headerlink" title="Maximum CPU utilization obtained with multiprogramming:"></a>Maximum CPU utilization obtained with multiprogramming:</h5><p>对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。<br><a id="more"></a></p>
-<h5 id="CPU-I-O区间周期："><a href="#CPU-I-O区间周期：" class="headerlink" title="CPU-I/O区间周期："></a>CPU-I/O区间周期：</h5><p>进程执行由CPU执行和I/O等待周期组成。进程在这两个状态之间切换。进程执行从CPU区间（CPU burst)开始，在这之后是I/O区间（I/O burst），接着是另一个CPU区间，然后是另一个I/O区间，如此进行下去。最终，最后的CPU区间通过系统请求终止执行。<br><img src="/img/cpu.png" alt="cpu.png"></p>
-<h5 id="CPU区间时间曲线："><a href="#CPU区间时间曲线：" class="headerlink" title="CPU区间时间曲线："></a>CPU区间时间曲线：</h5><p><img src="/img/cpu_time_histogram.png" alt="cpu_time_histogram.png"></p>
-<hr>
-<h3 id="CPU-Scheduler（CPU-调度器）"><a href="#CPU-Scheduler（CPU-调度器）" class="headerlink" title="CPU Scheduler（CPU 调度器）"></a>CPU Scheduler（CPU 调度器）</h3><p>从在等待执行的进程中选出一个，并且分配其CPU<br>CPU调度决策发生的时间：</p>
+        <blockquote>
+<p>CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的吞吐率。</p>
+</blockquote>
+<h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><h3 id="Maximum-CPU-utilization-obtained-with-multiprogramming"><a href="#Maximum-CPU-utilization-obtained-with-multiprogramming" class="headerlink" title="Maximum CPU utilization obtained with multiprogramming:"></a>Maximum CPU utilization obtained with multiprogramming:</h3><p>对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。<br><a id="more"></a></p>
+<h3 id="CPU-I-O区间周期："><a href="#CPU-I-O区间周期：" class="headerlink" title="CPU-I/O区间周期："></a>CPU-I/O区间周期：</h3><p>进程执行由CPU执行和I/O等待周期组成。进程在这两个状态之间切换。进程执行从CPU区间（CPU burst)开始，在这之后是I/O区间（I/O burst），接着是另一个CPU区间，然后是另一个I/O区间，如此进行下去。最终，最后的CPU区间通过系统请求终止执行。<br><img src="/img/cpu.png" alt="cpu.png"></p>
+<h3 id="CPU区间时间曲线："><a href="#CPU区间时间曲线：" class="headerlink" title="CPU区间时间曲线："></a>CPU区间时间曲线：</h3><p><img src="/img/cpu_time_histogram.png" alt="cpu_time_histogram.png"></p>
+<p>该曲线通常为指数或超指数形式，具有大量短CPU区间和少量长CPU区间。</p>
+<h2 id="CPU-Scheduler（CPU-调度器）"><a href="#CPU-Scheduler（CPU-调度器）" class="headerlink" title="CPU Scheduler（CPU 调度器）"></a>CPU Scheduler（CPU 调度器）</h2><p>每当CPU空闲时，操作系统就必须从就绪队列中选择一个进程来执行。进程选择由短期调度程序执行。</p>
+<p>CPU调度决策发生的时间：</p>
 <ul>
 <li>进程从运行到等待的切换</li>
 <li>进程从运行到就绪的切换</li>
 <li>进程从等待到就绪的切换</li>
 <li>进程终止</li>
 </ul>
-<font color="red">即CPU中即将没有进程执行的时候</font>
+<font color="red">即CPU中即将没有进程执行，将要空闲的时候</font>
 
 <p>对于第一种和第四种情况，没有选择只有调度。<strong>一个新进程(如果存在)</strong>必须被执行，<strong>此时是从就绪队列中调度出来执行</strong>。不过，对于第二种和第三种情况，可以进行选择。</p>
-<font color="red">所谓的选择就是选择一个新进程来执行。</font>
+<font color="red">所谓的选择就是选择一个就绪队列中的进程来执行。</font>
 
 <p>当调度只能发生在第一和第四种情况下时，称调度方案是非抢占的(nonpreemptive)的或协作的(cooperative)；否则，称调度方案是抢占的(preemptive)。</p>
-<font color="red">非抢占式调度，一旦CPU分配给一个进程，那么该进程会一致使用CPU直到进程终止或切换到等待状态。</font><br>___<br>### Dispatch(分派器)<br>分派器将CPU的控制权交给短期调度程序选中的进程;包括：<br><em> 上下文切换
-</em> 用户模式切换<br>* 跳转到用户程序的适当的位置重启程序<br><br><font color="red">先在内核模式进行上下文切换 -&gt; 切换到用户模式 -&gt; 到合适的位置重启程序</font>
+<font color="red">非抢占式调度，一旦CPU分配给一个进程，那么该进程会一致使用CPU直到进程终止或切换到等待状态。</font>
+
+<p>抢占调度对于访问共享数据是有代价的。需要同步机制来解决；对于操作系统内核的设计也有影响。</p>
+<h2 id="Dispatch-分派器"><a href="#Dispatch-分派器" class="headerlink" title="Dispatch(分派器)"></a>Dispatch(分派器)</h2><p>分派器将CPU的控制权交给短期调度程序选中的进程;包括：</p>
+<ul>
+<li>上下文切换</li>
+<li>用户模式切换</li>
+<li>跳转到用户程序的适当的位置重启程序（中断重新启动）</li>
+</ul>
+<font color="red">先在内核模式进行上下文切换 -&gt; 切换到用户模式 -&gt; 到合适的位置重启程序</font>
 
 <p>分派器停止一个进程而启动另一个所要花的时间称为分派延迟(dispatch latency)</p>
-<hr>
-<h3 id="Scheduling-Criteria-调度准则"><a href="#Scheduling-Criteria-调度准则" class="headerlink" title="Scheduling Criteria(调度准则)"></a>Scheduling Criteria(调度准则)</h3><ul>
+<h2 id="Scheduling-Criteria-调度准则"><a href="#Scheduling-Criteria-调度准则" class="headerlink" title="Scheduling Criteria(调度准则)"></a>Scheduling Criteria(调度准则)</h2><ul>
 <li>CPU utilization - keep the CPU as busy as possible</li>
 <li>Throughput(吞吐量) - of processes that complete their execution per time unit.</li>
 <li>Turnaround time(轮转时间) - Turnaround time is the sum of the periods spent waiting to get into memory, waiting in the ready queue, executing on the CPU, and doing I/O.</li>
-<li>Waiting time - amount of time a process has been waiting <strong>in the queue</strong>.</li>
-<li>Response time - amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment).</li>
-</ul>
-<hr>
-<h3 id="Scheduling-Algorithms-调度算法"><a href="#Scheduling-Algorithms-调度算法" class="headerlink" title="Scheduling Algorithms(调度算法)"></a>Scheduling Algorithms(调度算法)</h3><ul>
-<li>First-Come,First-Served(FCFS)Scheduling:先请求CPU的进程先分配到CPU。可以使用FIFO队列来实现。不过进程等待时间通常较长。</li>
+<li>Waiting time - amount of time a process has been waiting <strong>in the ready queue</strong>.</li>
+<li>Response time - amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment).<h2 id="Scheduling-Algorithms-调度算法"><a href="#Scheduling-Algorithms-调度算法" class="headerlink" title="Scheduling Algorithms(调度算法)"></a>Scheduling Algorithms(调度算法)</h2></li>
+<li>First-Come,First-Served(FCFS)Scheduling:先请求CPU的进程先分配到CPU。可以使用FIFO队列来实现。不过进程等待时间通常较长。可能会出现护航效果(convoy effect)，导致CPU和设备的使用率变得很低</li>
 <li>Shortest-Job-First(SJF)Scheduling:将每个进程与其下一个CPU区间段相关联。当CPU空闲时，会将CPU分配给具有最短CPU区间的进程。<font color="red">SJF是理想的情况，因为无法测定每个进程运行所需的CPU时间，但可以作为上限。</font></li>
 <li>Shortest-Remaining-Time-First(SRTF):抢占式的，将CPU分配给当前执行剩余时间最少的进程。</li>
 <li>Determining Length of Next CPU Burst:认为下一个CPU区间的长度与之前的相似，通过计算下一个CPU区间长度的近似值，能选择具有最短预测CPU区间的进程来运行。通常可预测为以前CPU区间的测量长度的指数平均。</li>
 <li>Priority Scheduling:每个进程都有一个优先级与其关联，具有最高优先级的进程会分配到CPU。具有相同优先级的进程按FCFS顺序调度。优先级算法的一个主要问题是无穷阻塞(indefinite blocking)或饥饿(starvation)。解决方法之一是老化(aging)，即逐渐增加在系统中等待很长时间的进程的优先级。</li>
 <li>Round Robin(RR):定义一个较小时间单元(时间片),当时间片走完之后，进程会被抢占同时被加入到就绪队列的末端。如果时间片很大，RR与FCFS类似，如果时间片很小，那么大部分时间浪费在上下文切换。根据经验，80%的CPU区间应该小于时间片，即大部分的进程在一个时间片内可以完成。通常，RR的平均轮转时间高于SJF，但响应时间低于SJF。</li>
 <li>Multilevel Queue:将就绪队列分成多个独立队列。根据进程的属性，如内存大小、进程优先级、进程类型，一个进程被永久地分配到一个队列。每个队列有自己的调度算法。进程进入系统后永久地被分配到一个队列。优点是低调度开销，缺点是不够灵活。<br><img src="/img/multilevel_queue.png" alt="multilevel_queue.png"></li>
-<li>Multilevel Feedback Queue:允许进程在队列之间移动。根据不同CPU区间的特点区分进程。如果进程使用过多CPU时间，就被转移到更低优先级队列。在较低优先级队列等待时间过长的进程会被转移到更高优先级队列。这种老化可以阻止饥饿发生。<br><img src="/img/multilevel_feedback.png" alt="multilevel_feedback.png"></li>
+<li>Multilevel Feedback Queue:允许进程在队列之间移动。根据不同CPU区间的特点区分进程。如果进程使用过多CPU时间，就被转移到更低优先级队列。在较低优先级队列等待时间过长的进程会被转移到更高优先级队列。这种老化可以阻止饥饿发生。<br><img src="/img/multilevel_feedback.png" alt="multilevel_feedback.png"><h2 id="Multiple-Processor-Scheduling-多处理器调度-非重点"><a href="#Multiple-Processor-Scheduling-多处理器调度-非重点" class="headerlink" title="Multiple-Processor Scheduling(多处理器调度)(非重点)"></a>Multiple-Processor Scheduling(多处理器调度)(非重点)</h2></li>
 </ul>
-<hr>
-<h3 id="Multiple-Processor-Scheduling-多处理器调度-非重点"><a href="#Multiple-Processor-Scheduling-多处理器调度-非重点" class="headerlink" title="Multiple-Processor Scheduling(多处理器调度)(非重点)"></a>Multiple-Processor Scheduling(多处理器调度)(非重点)</h3><hr>
-<h3 id="Real-TIme-Scheduling"><a href="#Real-TIme-Scheduling" class="headerlink" title="Real-TIme Scheduling"></a>Real-TIme Scheduling</h3><ul>
+<h2 id="Real-TIme-Scheduling"><a href="#Real-TIme-Scheduling" class="headerlink" title="Real-TIme Scheduling"></a>Real-TIme Scheduling</h2><ul>
 <li>Hard real-time systems：要求在一定时间内完成某个任务。</li>
-<li>Soft real-time computing: 统计意义上的实时，例如，有的应用要求系统在95%的情况下都会确保在规定的时间内完成某个动作，而不一定要求100%。</li>
-</ul>
-<hr>
-<h3 id="Thread-Scheduling"><a href="#Thread-Scheduling" class="headerlink" title="Thread Scheduling"></a>Thread Scheduling</h3><ul>
+<li>Soft real-time computing: 统计意义上的实时，例如，有的应用要求系统在95%的情况下都会确保在规定的时间内完成某个动作，而不一定要求100%。<h2 id="Thread-Scheduling"><a href="#Thread-Scheduling" class="headerlink" title="Thread Scheduling"></a>Thread Scheduling</h2></li>
 <li>Local Scheduling:线程库如何决定哪一个线程分配到哪一个LWP</li>
 <li>Global Scheduling:内核如何决定哪一个内核线程下一个运行</li>
 </ul>
@@ -461,11 +470,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -477,11 +486,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
             
             <div class="clearfix"></div>

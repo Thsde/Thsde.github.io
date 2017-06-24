@@ -8,7 +8,7 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>进程 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行。一个进程包括以下三个方面
+  <meta name="description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行（运行是进程的五状态之一）。一个进程包括以下三个方面
 
 程序计数器 (program counter)
 堆栈段 (stack)
@@ -17,7 +17,7 @@
 <meta property="og:title" content="进程">
 <meta property="og:url" content="http://yoursite.com/2017/03/12/进程/index.html">
 <meta property="og:site_name" content="Th's blog">
-<meta property="og:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行。一个进程包括以下三个方面
+<meta property="og:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行（运行是进程的五状态之一）。一个进程包括以下三个方面
 
 程序计数器 (program counter)
 堆栈段 (stack)
@@ -27,10 +27,10 @@
 <meta property="og:image" content="http://yoursite.com/img/进程调度队列.png">
 <meta property="og:image" content="http://yoursite.com/img/process_creation.png">
 <meta property="og:image" content="http://yoursite.com/img/communication_models.png">
-<meta property="og:updated_time" content="2017-06-10T15:51:55.824Z">
+<meta property="og:updated_time" content="2017-06-24T10:04:35.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程">
-<meta name="twitter:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行。一个进程包括以下三个方面
+<meta name="twitter:description" content="Process Concept简单来说，进程就是指正在执行的程序，执行并不一定是在运行（运行是进程的五状态之一）。一个进程包括以下三个方面
 
 程序计数器 (program counter)
 堆栈段 (stack)
@@ -181,7 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Process-Concept"><a href="#Process-Concept" class="headerlink" title="Process Concept"></a>Process Concept</h2><p>简单来说，进程就是指<strong>正在执行的程序，执行并不一定是在运行</strong>。<br>一个进程包括以下三个方面</p>
+        <h2 id="Process-Concept"><a href="#Process-Concept" class="headerlink" title="Process Concept"></a>Process Concept</h2><p>简单来说，进程就是指<strong>正在执行的程序，执行并不一定是在运行</strong>（运行是进程的五状态之一）。<br>一个进程包括以下三个方面</p>
 <ul>
 <li>程序计数器 (program counter)</li>
 <li>堆栈段 (stack)</li>
@@ -215,6 +215,7 @@
 <li>Device queues – set of processes waiting for an I/O device</li>
 </ul>
 <p><strong>Processes migrate(迁移) among the various queues</strong></p>
+<p><strong>注意，并没有执行队列这个说法，单CPU每次只有一个进程在被执行，不存在执行队列</strong></p>
 <p>新进程开始处于就绪队列。在就绪队列中等待直到被选中执行或被分派。当进程分配到CPU执行时，可能发生下面几种事件中的一种：</p>
 <ul>
 <li>进程可能发出一个IO请求，并被放到IO队列中</li>
@@ -224,13 +225,13 @@
 <p><img src="/img/进程调度队列.png" alt="进程调度队列"></p>
 <h3 id="Scheduler-调度程序"><a href="#Scheduler-调度程序" class="headerlink" title="Scheduler(调度程序)"></a>Scheduler(调度程序)</h3><p>进程在其生命周期中会在各种调度队列之间迁移。为了调度，操作系统必须按某种方式从这些队列中选择进程。进程选择是由相应的调度程序来执行的。</p>
 <ul>
-<li>长期调度程序(long-term scheduler)：又叫做作业调度程序(job scheduler)从存放”进程”的大容量存储设备的缓存池中选择进程，并加载进内存准备执行，一般与进程的创建相关。</li>
-<li>短期调度程序(short-term scheduler)：又叫做CPU调度程序，从准备执行的进程中选择进程，并为之分配CPU。</li>
+<li>长期调度程序(long-term scheduler)：又叫做作业调度程序(job scheduler)从存放”进程”的大容量存储设备的缓存池中选择进程，并加载进内存准备执行，一般与进程的创建相关。此处，个人的理解是作业调度程序是将作业队列(job queue)中的进程调度到就绪队列中。</li>
+<li>短期调度程序(short-term scheduler)：又叫做CPU调度程序，从准备执行的进程(在就绪队列中)中选择进程，并为之分配CPU。</li>
 <li>中期调度程序(medium-term scheduler)：核心思想是能将进程从内存中移出，从而降低多道程序设计的程度。之后，进程能被重新调入内存，并从中断处继续执行。这种方案称为交换(swapping)</li>
 </ul>
 <p><strong>长期调度程序被调用的频率比较低，短期调度程序被调用的频率比较高</strong></p>
 <h3 id="Context-Switch-上下文切换"><a href="#Context-Switch-上下文切换" class="headerlink" title="Context Switch(上下文切换)"></a>Context Switch(上下文切换)</h3><p>将CPU切换到另一个进程需要保存当前进程的状态（保存在PCB中）并恢复另一个进程的状态，这一任务称为上下文切换</p>
-<h2 id="Operations-on-Processes-进程操作"><a href="#Operations-on-Processes-进程操作" class="headerlink" title="Operations on Processes(进程操作)"></a>Operations on Processes(进程操作)</h2><h3 id="进程创建-Process-Creation"><a href="#进程创建-Process-Creation" class="headerlink" title="进程创建(Process Creation)"></a>进程创建(Process Creation)</h3><p>进程在其执行过程中，能通过创建进程系统调用创建多个新进程。创建进程称为父进程，而新进程称为子进程。每个新进程可以在创建其他进程，从而行程了进程树。</p>
+<h2 id="Operations-on-Processes-进程操作"><a href="#Operations-on-Processes-进程操作" class="headerlink" title="Operations on Processes(进程操作)"></a>Operations on Processes(进程操作)</h2><h3 id="进程创建-Process-Creation"><a href="#进程创建-Process-Creation" class="headerlink" title="进程创建(Process Creation)"></a>进程创建(Process Creation)</h3><p>进程在其执行过程中，能通过创建进程系统调用创建多个新进程。创建进程称为父进程，而新进程称为子进程。每个新进程可以在创建其他进程，从而形成了进程树。</p>
 <p><img src="/img/process_creation.png" alt="process_creation.png"></p>
 <p>创建进程的两种可能：</p>
 <ol>
@@ -549,11 +550,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">转载</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">转载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,11 +566,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
             
             <div class="clearfix"></div>
