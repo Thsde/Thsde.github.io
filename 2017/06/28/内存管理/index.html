@@ -6,14 +6,63 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 计算机组成 | Th&#39;s blog</title>
+  <title>虚拟内存 | Th&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Th's blog">
-<meta property="og:url" content="http://yoursite.com/tags/计算机组成/index.html">
+  <meta name="description" content="两个特点
+进程中所有存储器访问都是逻辑地址，这些逻辑地址在运行时被转换为物理地址
+一个进程可以划分为许多快，在执行过程中，这些块不需要连续地位于主存中
+
+两个效果
+在主存中保留多个进程
+进程可以比主存的全部空间还大
+
+请求分页(Demand Paging)只有程序执行需要时才载入页。
+
+更少的IO需求
+更少的内存需求
+更快的响应
+更多的用户
+
+懒惰交换(lazy swapper)：只有在需要页时，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚拟内存">
+<meta property="og:url" content="http://yoursite.com/2017/06/28/内存管理/index.html">
 <meta property="og:site_name" content="Th's blog">
+<meta property="og:description" content="两个特点
+进程中所有存储器访问都是逻辑地址，这些逻辑地址在运行时被转换为物理地址
+一个进程可以划分为许多快，在执行过程中，这些块不需要连续地位于主存中
+
+两个效果
+在主存中保留多个进程
+进程可以比主存的全部空间还大
+
+请求分页(Demand Paging)只有程序执行需要时才载入页。
+
+更少的IO需求
+更少的内存需求
+更快的响应
+更多的用户
+
+懒惰交换(lazy swapper)：只有在需要页时，">
+<meta property="og:updated_time" content="2017-06-28T16:21:43.393Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Th's blog">
+<meta name="twitter:title" content="虚拟内存">
+<meta name="twitter:description" content="两个特点
+进程中所有存储器访问都是逻辑地址，这些逻辑地址在运行时被转换为物理地址
+一个进程可以划分为许多快，在执行过程中，这些块不需要连续地位于主存中
+
+两个效果
+在主存中保留多个进程
+进程可以比主存的全部空间还大
+
+请求分页(Demand Paging)只有程序执行需要时才载入页。
+
+更少的IO需求
+更少的内存需求
+更快的响应
+更多的用户
+
+懒惰交换(lazy swapper)：只有在需要页时，">
   
     <link rel="alternative" href="/atom.xml" title="Th&#39;s blog" type="application/atom+xml">
   
@@ -139,60 +188,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-内存管理" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/13/instruction/" class="archive-article-date">
-  	<time datetime="2017-03-13T15:01:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/13/instruction/">指令集</a>
+    <h1 class="article-title" itemprop="name">
+      虚拟内存
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/28/内存管理/" class="archive-article-date">
+  	<time datetime="2017-06-28T01:42:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="两个特点"><a href="#两个特点" class="headerlink" title="两个特点"></a>两个特点</h2><ol>
+<li>进程中所有存储器访问都是逻辑地址，这些逻辑地址在运行时被转换为物理地址</li>
+<li>一个进程可以划分为许多快，在执行过程中，这些块不需要连续地位于主存中</li>
+</ol>
+<h2 id="两个效果"><a href="#两个效果" class="headerlink" title="两个效果"></a>两个效果</h2><ul>
+<li>在主存中保留多个进程</li>
+<li>进程可以比主存的全部空间还大</li>
+</ul>
+<h2 id="请求分页-Demand-Paging"><a href="#请求分页-Demand-Paging" class="headerlink" title="请求分页(Demand Paging)"></a>请求分页(Demand Paging)</h2><p>只有程序执行需要时才载入页。</p>
+<ul>
+<li>更少的IO需求</li>
+<li>更少的内存需求</li>
+<li>更快的响应</li>
+<li>更多的用户</li>
+</ul>
+<p>懒惰交换(lazy swapper)：只有在需要页时，才将它调入内存。</p>
+<h3 id="Valid-Invalid-Bit"><a href="#Valid-Invalid-Bit" class="headerlink" title="Valid-Invalid Bit"></a>Valid-Invalid Bit</h3><p>通过维护一个页表来记录哪些页在内存中</p>
+<h3 id="Page-Fault"><a href="#Page-Fault" class="headerlink" title="Page Fault"></a>Page Fault</h3><p>当进程试图访问哪些还未调入内存的页时，会产生page fault。</p>
+<p>处理：</p>
+<ol>
+<li>检查进程的内部页表，以确定该引用是合法还是非法的地址访问</li>
+<li>如果引用非法，那么终止进程。如果引用有效但是尚未调入页面，那么现在调入</li>
+<li>找到一个空闲帧</li>
+<li>调度一个磁盘操作，以便将所需要的页调入刚分配的帧</li>
+<li>当磁盘读操作完成后，修改进程的内部表和页表，以表示该页已在内存中。</li>
+<li>重新开始因页错误而终端的指令。</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/reward.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机组成</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/28/内存管理/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/06/29/毛概/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          毛概
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/06/27/Deadlock/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Deadlock</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="内存管理" data-title="虚拟内存" data-url="http://yoursite.com/2017/06/28/内存管理/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -215,9 +411,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
