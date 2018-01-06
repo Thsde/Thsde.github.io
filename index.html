@@ -133,133 +133,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-泛型编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/08/泛型编程/">泛型编程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/08/泛型编程/" class="archive-article-date">
-  	<time datetime="2017-07-08T01:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/08/泛型编程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-毛概" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/29/毛概/">毛概</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/29/毛概/" class="archive-article-date">
-  	<time datetime="2017-06-29T12:55:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1><center>马克思主义中国化两大理论成果</center></h1>
-
-<h2 id="如何理解马克思主义中国化的科学内涵和重要意义"><a href="#如何理解马克思主义中国化的科学内涵和重要意义" class="headerlink" title="如何理解马克思主义中国化的科学内涵和重要意义"></a>如何理解马克思主义中国化的科学内涵和重要意义</h2><h3 id="科学内涵"><a href="#科学内涵" class="headerlink" title="科学内涵"></a>科学内涵</h3><p>马克思主义中国化，就是将马克思主义基本原理同中国具体实际相结合，不断形成具有中国特色的马克思主义理论成果的过程。（具体的说，就是把马克思主义基本原理同中国革命、建设和改革的实践结合起来，同中国的优秀历史传统和优秀文化结合起来，既坚持马克思主义又发展马克思主义）。</p>
-        
-          <a class="article-more-a" href="/2017/06/29/毛概/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">毛概</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/29/毛概/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-内存管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -284,30 +157,9 @@
 <li>进程中所有存储器访问都是逻辑地址，这些逻辑地址在运行时被转换为物理地址</li>
 <li>一个进程可以划分为许多快，在执行过程中，这些块不需要连续地位于主存中</li>
 </ol>
-<h2 id="两个效果"><a href="#两个效果" class="headerlink" title="两个效果"></a>两个效果</h2><ul>
-<li>在主存中保留多个进程</li>
-<li>进程可以比主存的全部空间还大</li>
-</ul>
-<h2 id="请求分页-Demand-Paging"><a href="#请求分页-Demand-Paging" class="headerlink" title="请求分页(Demand Paging)"></a>请求分页(Demand Paging)</h2><p>只有程序执行需要时才载入页。</p>
-<ul>
-<li>更少的IO需求</li>
-<li>更少的内存需求</li>
-<li>更快的响应</li>
-<li>更多的用户</li>
-</ul>
-<p>懒惰交换(lazy swapper)：只有在需要页时，才将它调入内存。</p>
-<h3 id="Valid-Invalid-Bit"><a href="#Valid-Invalid-Bit" class="headerlink" title="Valid-Invalid Bit"></a>Valid-Invalid Bit</h3><p>通过维护一个页表来记录哪些页在内存中</p>
-<h3 id="Page-Fault"><a href="#Page-Fault" class="headerlink" title="Page Fault"></a>Page Fault</h3><p>当进程试图访问哪些还未调入内存的页时，会产生page fault。</p>
-<p>处理：</p>
-<ol>
-<li>检查进程的内部页表，以确定该引用是合法还是非法的地址访问</li>
-<li>如果引用非法，那么终止进程。如果引用有效但是尚未调入页面，那么现在调入</li>
-<li>找到一个空闲帧</li>
-<li>调度一个磁盘操作，以便将所需要的页调入刚分配的帧</li>
-<li>当磁盘读操作完成后，修改进程的内部表和页表，以表示该页已在内存中。</li>
-<li>重新开始因页错误而终端的指令。</li>
-</ol>
-
+        
+          <a class="article-more-a" href="/2017/06/28/内存管理/#more">more >></a>
+        
       
 
       
@@ -374,39 +226,9 @@
 <li>非抢占(No preemption)</li>
 <li>循环等待(Circular wait)</li>
 </ul>
-<h3 id="资源分配图"><a href="#资源分配图" class="headerlink" title="资源分配图"></a>资源分配图</h3><p>死锁问题可用系统资源分配图的有向图进行更为精确描述。</p>
-<p>从进程Pi指向资源Rj的有向边称为申请边，有向边Rj -&gt; Pi称为分配边。</p>
-<p>在图上，用圆形表示进程Pi，用矩形表示资源类型Rj。由于资源类型Rj可能有多个实例，所以在矩形中用圆点表示实例。</p>
-<p>如果分配图没有环，那么系统就没有进程死锁。如果分配图有环，那么可能存在死锁。</p>
-<p>如果每个资源类型刚好有一个实例，那么有环就意味着已经出现死锁。如果环涉及一组资源类型，而每个类型只有一个实例，那么就出现死锁。环所涉及的进程就死锁。</p>
-<p>如果每个资源类型有多个实例，那么有环并不意味着已经出现了死锁。</p>
-<h2 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h2><ul>
-<li>可使用协议以预防或避免死锁，确保系统不会进入死锁状态。</li>
-<li>可允许系统进入死锁状态，然后检测它，并加以恢复。</li>
-<li>可忽视这个问题，认为死锁不可能在系统内发生。</li>
-</ul>
-<h2 id="死锁预防-Deadlock-Prevention"><a href="#死锁预防-Deadlock-Prevention" class="headerlink" title="死锁预防(Deadlock Prevention)"></a>死锁预防(Deadlock Prevention)</h2><p>通过确保至少一个必要条件不成立</p>
-<h3 id="互斥"><a href="#互斥" class="headerlink" title="互斥"></a>互斥</h3><p>通过资源共享，但是，通常不能通过否定互斥条件来预防死锁，因为有的资源本身就是非共享的。</p>
-<h3 id="占有与等待"><a href="#占有与等待" class="headerlink" title="占有与等待"></a>占有与等待</h3><p>通过保证：当一个进程申请一个资源时，它不能占有其他资源。例如：每个进程在执行前申请并获得所有资源；或者，允许进程在没有资源时才可申请，在申请更多其他资源之前，必须释放现已分配的所有资源。</p>
-<p>这两种协议的缺点：</p>
-<ul>
-<li>资源利用率低</li>
-<li>可能发生饥饿，一个进程如果需要多个常用资源，可能会永久等待。</li>
-</ul>
-<h3 id="非抢占"><a href="#非抢占" class="headerlink" title="非抢占"></a>非抢占</h3><p>可以使用以下协议：如果一个进程占有资源并申请另一个不能立即分配的资源，那么其现已分配的资源都可被抢占。</p>
-<h3 id="循环等待"><a href="#循环等待" class="headerlink" title="循环等待"></a>循环等待</h3><p>一个确保此条件不成立的方法是对所有资源类型进行完全排序，且要求每个进程按递增顺序来申请资源。</p>
-<h2 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h2><p>死锁预防的方法限制确保四个必要条件之一不会发生，因此死锁不成立。然而，通过这种方法预防死锁的副作用是低设备使用率和系统吞吐率</p>
-<p>安全状态：对于进程序列\<p1, p2,="" ...="" ,="" pn="">，如果对于每个Pi，Pi仍然可以申请的资源数小于当前可用资源加上所有进程Pj(其中 j &lt; i)所占有的资源，那么这一顺序称为安全序列。如果没有这样的顺序存在，那么系统状态就处于不安全状态。</p1,></p>
-<p>安全状态不是死锁状态。相反，死锁状态是不安全状态。然而，不是所有不安全状态都能导致死锁状态。只要状态为安全，操作系统就能避免思索状态。</p>
-<h3 id="资源分配图算法"><a href="#资源分配图算法" class="headerlink" title="资源分配图算法"></a>资源分配图算法</h3><h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p>数据结构：</p>
-<ul>
-<li>Available：表示每种资源的现有实例数量</li>
-<li>Max：n * m矩阵，定义每个进程的最大需求</li>
-<li>Allocation：n * m矩阵，定义每个进程现在已分配的各种资源类型的实例数量。</li>
-<li>Need：n * m矩阵，表示每个进程还需要的剩余的资源。</li>
-</ul>
-<p>安全性算法：</p>
-
+        
+          <a class="article-more-a" href="/2017/06/27/Deadlock/#more">more >></a>
+        
       
 
       
@@ -430,136 +252,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/27/Deadlock/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-重新开始" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/10/重新开始/">重新开始</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/10/重新开始/" class="archive-article-date">
-  	<time datetime="2017-06-10T13:33:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        The article has been encrypted, please enter your password to view.<br>
-        
-          <a class="article-more-a" href="/2017/06/10/重新开始/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/10/重新开始/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017年6月9日23-44-21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/2017年6月9日23-44-21/">2017年6月9日23:44:21</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/09/2017年6月9日23-44-21/" class="archive-article-date">
-  	<time datetime="2017-06-09T15:44:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=171530&auto=0&height=66"></iframe>
-
-<p>今天算是成功的第一天吧。</p>
-        
-          <a class="article-more-a" href="/2017/06/09/2017年6月9日23-44-21/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随写</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/09/2017年6月9日23-44-21/">展开全文 >></a>
         </p>
       
 
@@ -833,9 +525,267 @@
 
 
   
+    <article id="post-2017-05-10-23-39-32" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/10/2017-05-10-23-39-32/">2017-05-10 23:39:32</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/10/2017-05-10-23-39-32/" class="archive-article-date">
+  	<time datetime="2017-05-10T15:39:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=38018444&auto=0&height=66"></iframe>
+        
+          <a class="article-more-a" href="/2017/05/10/2017-05-10-23-39-32/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随写</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/10/2017-05-10-23-39-32/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017-04-22-00-15-51" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/22/2017-04-22-00-15-51/">随写</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/2017-04-22-00-15-51/" class="archive-article-date">
+  	<time datetime="2017-04-21T16:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        想想还是封起来好
+        
+          <a class="article-more-a" href="/2017/04/22/2017-04-22-00-15-51/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/22/2017-04-22-00-15-51/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017年4月7日18-20-16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/2017年4月7日18-20-16/">随写</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/2017年4月7日18-20-16/" class="archive-article-date">
+  	<time datetime="2017-04-07T10:20:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>偶然于网上看到的鲁迅先生的杂文集，《热风》，转载于此。</p>
+<h3 id="随感录四十一-①"><a href="#随感录四十一-①" class="headerlink" title="随感录四十一 ①"></a>随感录四十一 ①</h3><p>　　从一封匿名信里看见一句话，是“数麻石片”（原注江苏方言），大约是没有本领便不必提倡改革，不如去数石片的好的意思。因此又记起了本志通信栏内所载四川方言的“洗煤炭”②。想来别省方言中，相类的话还多；守着这专劝人自暴自弃的格言的人，也怕并不少。</p>
+        
+          <a class="article-more-a" href="/2017/04/07/2017年4月7日18-20-16/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/2017年4月7日18-20-16/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/06/拷贝/">拷贝、赋值、析构</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/06/拷贝/" class="archive-article-date">
+  	<time datetime="2017-04-06T12:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>如果一个构造函数的第一个参数是自身类类型的<strong>引用</strong>，且任何额外参数都有默认值，则此构造函数是拷贝构造函数。拷贝构造函数的第一个参数必须是一个引用类型，且几乎总是一个const的引用。</p>
+<p>如果类没有显式地定义一个拷贝构造函数，那么编译器会为其合成一个拷贝构造函数</p>
+        
+          <a class="article-more-a" href="/2017/04/06/拷贝/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/06/拷贝/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -847,7 +797,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 -_-!
+    		&copy; 2018 -_-!
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -918,11 +868,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">随写</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随写</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -947,14 +897,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毛概</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
             
             <div class="clearfix"></div>

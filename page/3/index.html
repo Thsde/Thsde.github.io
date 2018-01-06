@@ -133,521 +133,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Linux学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="开机流程与主引导分区-MBR"><a href="#开机流程与主引导分区-MBR" class="headerlink" title="开机流程与主引导分区(MBR)"></a>开机流程与主引导分区(MBR)</h2><p>BIOS是在开机的时候计算机系统会主动执行的第一个程序</p>
-<ul>
-<li>BIOS：一个写入到主板上的一个韧体(韧体就是写入到硬件上的一个软件程序)</li>
-<li>CMOS：记录各项硬件参数且嵌入在主板上的存储器</li>
-</ul>
-<p>开机流程如下：</p>
-<p>主动执行BIOS，识别第一个可开机的设备(如光盘、硬盘、U盘等) —&gt; MBR，第一个可开机设备的第一个扇区内的 主引导分区块，内包含引导加载程序 —&gt; 引导加载程序(Boot loader)，一支可读取内核文件来执行的软件。—&gt; 内核文件，开始操作系统的功能</p>
-<p>Boot loader是操作系统安装在MBR上的一套软件，主要包括</p>
-<ul>
-<li>提供菜单：用户可以选择不同的开机选项，是多重引导的重要功能</li>
-<li>载入内核文件：直接指向可开机的程序区段来开始操作系统</li>
-<li>转交其他loader：将引导加载功能转交给其他loader负责(因为引导加载程序除了可以安装在MBR之外，还可以安装在每个分区的引导扇区(boot sector))</li>
-</ul>
-<p>多重引导的工作：</p>
-<ul>
-<li>每个分区都拥有自己的启动扇区</li>
-<li>实际可开机的内核文件是放置到各分区内的</li>
-<li>loader只会识别自己的系统分区内的可开机内核文件，以及其他的loader而已</li>
-<li>loader可直接指向或者是间接将管理权转交给另一个管理程序</li>
-</ul>
-<h2 id="Linux安装模式下，磁盘分区的选择"><a href="#Linux安装模式下，磁盘分区的选择" class="headerlink" title="Linux安装模式下，磁盘分区的选择"></a>Linux安装模式下，磁盘分区的选择</h2><h3 id="目录树结构"><a href="#目录树结构" class="headerlink" title="目录树结构"></a>目录树结构</h3><p>所谓目录树结构就是以根目录为主，然后向下呈现分支状的目录结构的一种文件结构。</p>
-<h3 id="文件系统与目录树的关系-挂载"><a href="#文件系统与目录树的关系-挂载" class="headerlink" title="文件系统与目录树的关系(挂载)"></a>文件系统与目录树的关系(挂载)</h3><p>所谓的挂载就是利用一个目录当成进入点，将磁盘分区的数据放置在该目录下；也就是说，进入该目录就可以读取该分区的意思。这个操作称为挂载，进入点的目录称为“挂载点”。由于整个Linux系统最重要的就是根目录，因此根目录一定需要挂载到某个分区。至于其他的目录则可依用户自己的需求来给予挂载到不同的分区。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/31/Linux学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-CPU-Scheduling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/22/CPU-Scheduling/">CPU Scheduling</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/22/CPU-Scheduling/" class="archive-article-date">
-  	<time datetime="2017-03-22T01:05:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>CPU调度是多道程序操作系统的基础。通过在进程之间切换CPU，操作系统可以提高计算机的吞吐率。</p>
-</blockquote>
-<h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><h3 id="Maximum-CPU-utilization-obtained-with-multiprogramming"><a href="#Maximum-CPU-utilization-obtained-with-multiprogramming" class="headerlink" title="Maximum CPU utilization obtained with multiprogramming:"></a>Maximum CPU utilization obtained with multiprogramming:</h3><p>对于单处理器系统，每次只允许一个进程运行；任何其他进程必须等待，直到CPU空闲能被调度位置。多道程序的目标是在任何时候都有某些进程在运行（通过利用等待某些I/O请求的时间），使CPU使用率最大化。<br>
-        
-          <a class="article-more-a" href="/2017/03/22/CPU-Scheduling/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/22/CPU-Scheduling/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017年03月17日00-17-41" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/17/2017年03月17日00-17-41/">随写</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/17/2017年03月17日00-17-41/" class="archive-article-date">
-  	<time datetime="2017-03-16T16:17:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        抱歉，这个只是给自己看的
-        
-          <a class="article-more-a" href="/2017/03/17/2017年03月17日00-17-41/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/17/2017年03月17日00-17-41/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/thread/">thread</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/15/thread/" class="archive-article-date">
-  	<time datetime="2017-03-15T15:09:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h2><p>线程是CPU使用的基本单元，由线程ID、程序计数器、寄存器集合和栈组成。<br>
-        
-          <a class="article-more-a" href="/2017/03/15/thread/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/15/thread/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-GDB调试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/GDB调试/">GDB调试</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/15/GDB调试/" class="archive-article-date">
-  	<time datetime="2017-03-15T05:13:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <font color=red>文中代码部分及部分讲解转载自陈皓gdb教程相关博客</font>
-
-<h2 id="What-is-GDB"><a href="#What-is-GDB" class="headerlink" title="What is GDB?"></a>What is GDB?</h2>
-        
-          <a class="article-more-a" href="/2017/03/15/GDB调试/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">调试技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/15/GDB调试/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-instruction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/instruction/">指令集</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/13/instruction/" class="archive-article-date">
-  	<time datetime="2017-03-13T15:01:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Concept"><a href="#Concept" class="headerlink" title="Concept:"></a>Concept:</h3>
-        
-          <a class="article-more-a" href="/2017/03/13/instruction/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机组成</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/13/instruction/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/12/进程/">进程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/12/进程/" class="archive-article-date">
-  	<time datetime="2017-03-12T14:10:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Process-Concept"><a href="#Process-Concept" class="headerlink" title="Process Concept"></a>Process Concept</h2><p>简单来说，进程就是指<strong>正在执行的程序，执行并不一定是在运行</strong>（运行是进程的五状态之一）。<br>一个进程包括以下三个方面</p>
-<ul>
-<li>程序计数器 (program counter)</li>
-<li>堆栈段 (stack)</li>
-<li>数据段 (data section)</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/03/12/进程/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/12/进程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017年03月11日22-31-58" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/11/2017年03月11日22-31-58/">随写</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/11/2017年03月11日22-31-58/" class="archive-article-date">
-  	<time datetime="2017-03-11T14:32:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        抱歉，这个只是给自己看的
-        
-          <a class="article-more-a" href="/2017/03/11/2017年03月11日22-31-58/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/11/2017年03月11日22-31-58/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-function" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -713,29 +198,29 @@
 
 
   
-    <article id="post-2017年03月10日23-27-37" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-const" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/10/2017年03月10日23-27-37/">随写</a>
+      <a class="article-title" href="/2017/03/10/const/">C++中const的用法</a>
     </h1>
   
 
         
-        <a href="/2017/03/10/2017年03月10日23-27-37/" class="archive-article-date">
-  	<time datetime="2017-03-10T15:28:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+        <a href="/2017/03/10/const/" class="archive-article-date">
+  	<time datetime="2017-03-10T04:30:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        抱歉，这个只是给自己看的
+        <h3 id="const变量"><a href="#const变量" class="headerlink" title="const变量"></a>const变量</h3><p>const又叫做const限定符，用关键字const对变量的类型加以限定，可以使得变量的值不能被改变。<br>
         
-          <a class="article-more-a" href="/2017/03/10/2017年03月10日23-27-37/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/10/const/#more">more >></a>
         
       
 
@@ -749,7 +234,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
       		
 		</ul>
@@ -759,7 +244,72 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/10/2017年03月10日23-27-37/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/10/const/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-test-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/10/test-1/">C和C++中声明和定义的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/10/test-1/" class="archive-article-date">
+  	<time datetime="2017-03-09T16:07:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>声明使得名字为程序所知，而定义负责创建与名字关联的实体。<br>变量声明规定了变量的类型和名字，在这一点上定义与声明相同，然而定义还申请了存储空间，也可能会为变量赋一个初始值。</p>
+<p>如果想声明一个变量而非定义它，就在变量名前添加关键字extern，而且不要显式地初始化变量<br>
+        
+          <a class="article-more-a" href="/2017/03/10/test-1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/10/test-1/">展开全文 >></a>
         </p>
       
 
@@ -779,7 +329,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </nav>
   
 
@@ -791,7 +341,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 -_-!
+    		&copy; 2018 -_-!
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -862,11 +412,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">随写</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随写</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -891,14 +441,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机组成</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">毛概</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">记录</a>
               </li>
             
             <div class="clearfix"></div>
